@@ -1,0 +1,2538 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akademi Saham Indonesia — Belajar dari Nol sampai Pro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1628;
+    --navy-mid: #122040;
+    --navy-light: #1E3160;
+    --gold: #D4A843;
+    --gold-light: #F0C96A;
+    --gold-pale: #FFF8E8;
+    --emerald: #1A7A5E;
+    --emerald-light: #22A87C;
+    --emerald-pale: #E8F7F2;
+    --red: #C0392B;
+    --red-pale: #FDECEA;
+    --blue: #1A5FA8;
+    --blue-pale: #EBF3FC;
+    --surface: #FFFFFF;
+    --surface2: #F7F8FA;
+    --surface3: #EEF1F5;
+    --border: #DDE3EC;
+    --text: #0A1628;
+    --text-muted: #5A6A80;
+    --text-light: #8A9AB0;
+    --radius: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--navy);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-ticker {
+    background: var(--gold);
+    padding: 8px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .hero-ticker-inner {
+    display: inline-block;
+    animation: ticker 30s linear infinite;
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .hero-main {
+    padding: 80px 5% 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero-label {
+    display: inline-block;
+    background: rgba(212,168,67,0.15);
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(212,168,67,0.3);
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52px;
+    line-height: 1.1;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+  }
+  .hero-title span {
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  .hero-desc {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .hero-cta:hover { background: var(--gold-light); }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .hero-stat {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .hero-stat-num {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--gold-light);
+    display: block;
+    font-family: 'DM Serif Display', serif;
+  }
+  .hero-stat-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    background: rgba(10,22,40,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 14px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: #FFF;
+  }
+  .nav-logo span { color: var(--gold-light); }
+  .nav-links {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .nav-link {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.55);
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none;
+    background: none;
+    white-space: nowrap;
+  }
+  .nav-link:hover { background: rgba(255,255,255,0.1); color: #FFF; }
+
+  /* ─── MAIN CONTENT WRAPPER ─── */
+  main {
+    background: var(--surface2);
+    padding: 0;
+  }
+
+  /* ─── SECTION ─── */
+  .section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 72px 24px;
+  }
+  .section + .section {
+    border-top: 1px solid var(--border);
+  }
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--emerald);
+    background: var(--emerald-pale);
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 34px;
+    color: var(--navy);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .section-lead {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 680px;
+  }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+  }
+  .card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
+  .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .card-text {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), var(--emerald));
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 36px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 3px solid var(--surface2);
+  }
+  .timeline-year {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .timeline-heading {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .timeline-body {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* ─── INFO BOXES ─── */
+  .info-box {
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    border-left: 4px solid;
+  }
+  .info-box.navy { background: #EBF0F8; border-color: var(--blue); }
+  .info-box.gold { background: var(--gold-pale); border-color: var(--gold); }
+  .info-box.green { background: var(--emerald-pale); border-color: var(--emerald); }
+  .info-box.red { background: var(--red-pale); border-color: var(--red); }
+  .info-box-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .info-box.navy .info-box-title { color: var(--blue); }
+  .info-box.gold .info-box-title { color: #8B6A1A; }
+  .info-box.green .info-box-title { color: var(--emerald); }
+  .info-box.red .info-box-title { color: var(--red); }
+  .info-box p { font-size: 14px; color: var(--text); line-height: 1.65; }
+
+  /* ─── FORMULA ─── */
+  .formula-box {
+    background: var(--navy);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin: 24px 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .formula-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .formula-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFF;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .formula-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  /* ─── INDEX TABLE ─── */
+  .index-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  .index-table th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.8);
+    padding: 12px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  .index-table th:first-child { border-radius: 8px 0 0 8px; }
+  .index-table th:last-child { border-radius: 0 8px 8px 0; }
+  .index-table td {
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  .index-table tr:last-child td { border-bottom: none; }
+  .index-table tr:hover td { background: var(--surface3); }
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 100px;
+  }
+  .badge-gold { background: #FFF3CC; color: #6B4D0A; }
+  .badge-blue { background: var(--blue-pale); color: var(--blue); }
+  .badge-green { background: var(--emerald-pale); color: var(--emerald); }
+
+  /* ─── SAHAM TYPES ─── */
+  .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .type-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .type-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .type-card.common::before { background: var(--blue); }
+  .type-card.preferred::before { background: var(--gold); }
+  .type-card.growth::before { background: var(--emerald); }
+  .type-card.value::before { background: #9B59B6; }
+  .type-card.cyclical::before { background: #E67E22; }
+  .type-card.defensive::before { background: #2ECC71; }
+  .type-card-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+  .type-card-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .type-card-text { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+  /* ─── ANALISIS GRID ─── */
+  .analysis-method {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 24px;
+  }
+  .method-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+  }
+  .method-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 14px;
+  }
+  .method-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .method-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+  /* ─── RATIO TABLE ─── */
+  .ratio-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+  .ratio-table th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.85);
+    padding: 10px 14px;
+    font-size: 12px;
+    text-align: left;
+    font-weight: 700;
+  }
+  .ratio-table th:first-child { border-radius: 8px 0 0 0; }
+  .ratio-table th:last-child { border-radius: 0 8px 0 0; }
+  .ratio-table td {
+    padding: 12px 14px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  .ratio-table tr:last-child td { border-bottom: none; }
+  .ratio-table tr:hover td { background: var(--surface3); }
+  .ratio-name { font-weight: 700; color: var(--navy); }
+  .ratio-formula { font-size: 12px; color: var(--blue); font-weight: 600; display: block; margin-top: 2px; }
+  .ratio-good { color: var(--emerald); font-weight: 700; }
+  .ratio-bad { color: var(--red); font-weight: 700; }
+
+  /* ─── PSIKOLOGI ─── */
+  .psych-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .psych-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    text-align: center;
+  }
+  .psych-emoji { font-size: 32px; margin-bottom: 12px; }
+  .psych-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .psych-text { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+  /* ─── CANDLE CHART ILUSTRASI ─── */
+  .candle-visual {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    padding: 20px;
+    background: #0D1E33;
+    border-radius: var(--radius);
+    margin: 20px 0;
+    height: 140px;
+    justify-content: center;
+  }
+  .candle-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .candle-wick {
+    width: 2px;
+    background: rgba(255,255,255,0.4);
+  }
+  .candle-body {
+    width: 14px;
+    border-radius: 2px;
+  }
+  .candle-up { background: #2ECC71; }
+  .candle-down { background: #E74C3C; }
+
+  /* ─── QUIZ ─── */
+  #quiz-section {
+    background: var(--navy);
+    padding: 72px 5%;
+  }
+  .quiz-container {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .quiz-eyebrow {
+    display: inline-block;
+    background: rgba(212,168,67,0.15);
+    color: var(--gold-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(212,168,67,0.3);
+    margin-bottom: 16px;
+  }
+  .quiz-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    color: #FFF;
+    margin-bottom: 10px;
+  }
+  .quiz-subtitle {
+    font-size: 15px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 40px;
+  }
+  .quiz-progress-bar {
+    background: rgba(255,255,255,0.1);
+    height: 4px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    overflow: hidden;
+  }
+  .quiz-progress-fill {
+    background: var(--gold);
+    height: 4px;
+    border-radius: 100px;
+    transition: width 0.4s ease;
+  }
+  .quiz-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .quiz-topic {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold-light);
+    background: rgba(212,168,67,0.12);
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+  .quiz-counter {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+  }
+  .quiz-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+  }
+  .quiz-question {
+    font-size: 17px;
+    color: #FFF;
+    font-weight: 600;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .quiz-option {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .quiz-option:hover:not(:disabled) {
+    background: rgba(212,168,67,0.12);
+    border-color: rgba(212,168,67,0.4);
+    color: var(--gold-light);
+  }
+  .quiz-option.correct {
+    background: rgba(26,122,94,0.2);
+    border-color: var(--emerald-light);
+    color: #6EE7C7;
+  }
+  .quiz-option.wrong {
+    background: rgba(192,57,43,0.2);
+    border-color: #E57373;
+    color: #FFAB9B;
+  }
+  .quiz-option.dim {
+    opacity: 0.4;
+    cursor: default;
+  }
+  .quiz-option:disabled { cursor: default; }
+  .option-letter {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .quiz-feedback {
+    display: none;
+    margin-top: 20px;
+    padding: 14px 18px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .quiz-feedback.correct {
+    background: rgba(26,122,94,0.2);
+    border: 1px solid rgba(34,168,124,0.3);
+    color: #6EE7C7;
+  }
+  .quiz-feedback.wrong {
+    background: rgba(192,57,43,0.15);
+    border: 1px solid rgba(229,115,115,0.3);
+    color: #FFAB9B;
+  }
+  .quiz-next {
+    display: none;
+    margin-top: 20px;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 24px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: background 0.2s;
+  }
+  .quiz-next:hover { background: var(--gold-light); }
+  .quiz-result {
+    display: none;
+    text-align: center;
+    padding: 40px;
+  }
+  .quiz-score-big {
+    font-family: 'DM Serif Display', serif;
+    font-size: 72px;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .quiz-score-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 24px;
+  }
+  .quiz-score-msg {
+    font-size: 18px;
+    color: #FFF;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .quiz-score-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+  .quiz-restart {
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 28px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .quiz-restart:hover { background: var(--gold-light); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #060E1A;
+    padding: 40px 5%;
+    text-align: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 13px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  footer strong { color: var(--gold-light); }
+
+  /* ─── CALCULATORS ─── */
+  .calc-box {
+    background: var(--surface);
+    border: 2px solid var(--navy);
+    border-radius: var(--radius-lg);
+    margin: 32px 0;
+    overflow: hidden;
+  }
+  .calc-head {
+    background: var(--navy);
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .calc-head-tag {
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+  .calc-head-title { color: #FFF; font-weight: 700; font-size: 16px; }
+  .calc-body { padding: 22px; }
+  .calc-hint {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .calc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px;
+  }
+  .calc-field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .calc-field small {
+    display: block;
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .calc-input, .calc-select, .calc-textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--surface2);
+  }
+  .calc-textarea { min-height: 96px; resize: vertical; line-height: 1.5; }
+  .calc-input:focus, .calc-select:focus, .calc-textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: #FFF;
+    box-shadow: 0 0 0 3px rgba(212,168,67,0.18);
+  }
+  .calc-scroll { overflow-x: auto; margin-bottom: 12px; }
+  .calc-table { width: 100%; border-collapse: collapse; min-width: 760px; }
+  .calc-table th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.85);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-align: left;
+    padding: 10px 8px;
+    white-space: nowrap;
+  }
+  .calc-table td {
+    padding: 6px 6px;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+    vertical-align: middle;
+  }
+  .calc-table td.out { white-space: nowrap; color: var(--navy); font-weight: 600; }
+  .calc-table .calc-input { padding: 8px; font-size: 13px; min-width: 90px; }
+  .calc-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .calc-btn {
+    background: var(--navy);
+    color: var(--gold-light);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 9px 18px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+  }
+  .calc-btn:hover { background: var(--navy-light); }
+  .calc-btn.secondary {
+    background: var(--surface3);
+    color: var(--navy);
+    border: 1px solid var(--border);
+  }
+  .calc-btn.secondary:hover { background: var(--border); }
+  .calc-del {
+    background: var(--red-pale);
+    color: var(--red);
+    border: none;
+    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  .calc-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .result-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .result-card.good { background: var(--emerald-pale); border-color: var(--emerald-light); }
+  .result-card.bad { background: var(--red-pale); border-color: #E57373; }
+  .result-card.neutral { background: var(--gold-pale); border-color: var(--gold); }
+  .result-card.empty { opacity: 0.55; }
+  .result-card.hl { background: var(--navy); border-color: var(--navy); }
+  .result-card.hl .result-label { color: rgba(255,255,255,0.6); }
+  .result-card.hl .result-value { color: var(--gold-light); }
+  .result-card.hl .result-sub { color: rgba(255,255,255,0.5); }
+  .result-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+  }
+  .result-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    color: var(--navy);
+    margin: 6px 0 4px;
+    word-break: break-word;
+  }
+  .result-sub { font-size: 11.5px; color: var(--text-muted); line-height: 1.5; }
+  .status-pill {
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 100px;
+    letter-spacing: 0.3px;
+    text-transform: none;
+  }
+  .result-card.good .status-pill { background: var(--emerald); color: #FFF; }
+  .result-card.bad .status-pill { background: var(--red); color: #FFF; }
+  .result-card.neutral .status-pill { background: var(--gold); color: var(--navy); }
+  .calc-steps {
+    background: var(--navy);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin-top: 18px;
+    font-size: 12.5px;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.8);
+    word-break: break-word;
+  }
+  .calc-steps b { color: var(--gold-light); }
+  .calc-steps .step-title {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .calc-warn {
+    background: var(--gold-pale);
+    border-left: 4px solid var(--gold);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: #6B4D0A;
+    margin-top: 14px;
+    line-height: 1.55;
+  }
+  .calc-msg { font-size: 13px; color: var(--text-muted); padding: 14px 0; }
+  .ma-chart-wrap { background: #0D1E33; border-radius: var(--radius); padding: 14px; margin-top: 18px; }
+  .ma-legend {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 8px;
+  }
+  .ma-legend i { display: inline-block; width: 14px; height: 3px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+  .ma-table-wrap { max-height: 300px; overflow: auto; margin-top: 18px; border: 1px solid var(--border); border-radius: 10px; }
+  .ma-table { width: 100%; border-collapse: collapse; }
+  .ma-table th {
+    position: sticky; top: 0;
+    background: var(--navy); color: rgba(255,255,255,0.85);
+    font-size: 11px; padding: 8px 12px; text-align: right;
+  }
+  .ma-table th:first-child, .ma-table td:first-child { text-align: left; }
+  .ma-table td { padding: 7px 12px; font-size: 12.5px; text-align: right; border-bottom: 1px solid var(--border); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 700px) {
+    .hero-main { grid-template-columns: 1fr; gap: 40px; }
+    .hero-title { font-size: 36px; }
+    .type-grid, .analysis-method, .psych-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .section-title { font-size: 26px; }
+  }
+
+  /* ─── ACCORDION ─── */
+  .accordion-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .accordion-header {
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+  .accordion-header:hover { background: var(--surface3); }
+  .accordion-arrow { font-size: 18px; transition: transform 0.3s; color: var(--text-muted); }
+  .accordion-body {
+    display: none;
+    padding: 0 20px 18px;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .accordion-body.open { display: block; }
+  .accordion-arrow.open { transform: rotate(180deg); }
+
+  /* ─── STEP LIST ─── */
+  .step-list { list-style: none; counter-reset: steps; }
+  .step-list li {
+    counter-increment: steps;
+    position: relative;
+    padding-left: 48px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .step-list li::before {
+    content: counter(steps);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    background: var(--navy);
+    color: var(--gold-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  /* ─── CANDLESTICK LABEL ─── */
+  .candle-legend {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 12px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+  }
+  .candle-legend span { display: flex; align-items: center; gap: 6px; }
+  .dot { width: 10px; height: 10px; border-radius: 2px; }
+  .dot-green { background: #2ECC71; }
+  .dot-red { background: #E74C3C; }
+
+  /* ─── DIVIDER ─── */
+  .divider-dark {
+    height: 1px;
+    background: rgba(255,255,255,0.07);
+    margin: 40px 0;
+  }
+
+  /* ─── HIGHLIGHT TEXT ─── */
+  .highlight-block {
+    background: var(--navy);
+    color: var(--gold-light);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-size: 18px;
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  /* ─── TWO COL TEXT ─── */
+  .two-col-text {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .two-col-text p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+  @media (max-width: 600px) { .two-col-text { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="hero-ticker">
+  <div class="hero-ticker-inner">
+    IHSG ▲ 7.245 &nbsp;|&nbsp; BBCA ▲ 9.800 &nbsp;|&nbsp; BBRI ▲ 4.620 &nbsp;|&nbsp; TLKM ▼ 3.150 &nbsp;|&nbsp; ASII ▲ 4.900 &nbsp;|&nbsp; UNVR ▼ 2.840 &nbsp;|&nbsp; BMRI ▲ 6.525 &nbsp;|&nbsp; SMGR ▲ 5.250 &nbsp;|&nbsp; GGRM ▼ 24.000 &nbsp;|&nbsp; ANTM ▲ 1.545 &nbsp;|&nbsp; IHSG ▲ 7.245 &nbsp;|&nbsp; BBCA ▲ 9.800 &nbsp;|&nbsp; BBRI ▲ 4.620 &nbsp;|&nbsp; TLKM ▼ 3.150 &nbsp;|&nbsp; ASII ▲ 4.900 &nbsp;|&nbsp; UNVR ▼ 2.840 &nbsp;|&nbsp; BMRI ▲ 6.525 &nbsp;|&nbsp;
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Akademi<span>Saham</span></div>
+  <div class="nav-links">
+    <a class="nav-link" href="#sejarah">Sejarah</a>
+    <a class="nav-link" href="#indeks">Indeks</a>
+    <a class="nav-link" href="#ihsg-calc">Hitung IHSG</a>
+    <a class="nav-link" href="#pengenalan">Apa itu Saham</a>
+    <a class="nav-link" href="#jenis">Jenis Saham</a>
+    <a class="nav-link" href="#fundamental">Fundamental</a>
+    <a class="nav-link" href="#teknikal">Teknikal</a>
+    <a class="nav-link" href="#psikologi">Psikologi</a>
+    <a class="nav-link" href="#quiz-section">Quiz</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-main">
+    <div>
+      <div class="hero-label">Kelas Gratis Pasar Modal</div>
+      <h1 class="hero-title">Belajar Saham<br>dari <span>Nol sampai Pro</span></h1>
+      <p class="hero-desc">Panduan lengkap berinvestasi di pasar saham Indonesia — mulai sejarah, jenis saham, analisis fundamental & teknikal, hingga psikologi trading.</p>
+      <a class="hero-cta" href="#sejarah">Mulai Belajar →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">9</span>
+        <div class="hero-stat-label">Modul pembelajaran</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">7</span>
+        <div class="hero-stat-label">Mini quiz interaktif</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">800+</span>
+        <div class="hero-stat-label">Emiten di IDX</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">1912</span>
+        <div class="hero-stat-label">Tahun bursa pertama</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main>
+
+  <!-- ─── MODUL 1: SEJARAH ─── -->
+  <div class="section" id="sejarah">
+    <div class="section-eyebrow">📜 Modul 1</div>
+    <h2 class="section-title">Sejarah Pasar Saham Indonesia</h2>
+    <p class="section-lead">Pasar modal Indonesia punya sejarah panjang sejak era kolonial hingga menjadi salah satu bursa paling dinamis di Asia Tenggara.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">1912</div>
+        <div class="timeline-heading">Bursa Efek Pertama di Batavia</div>
+        <div class="timeline-body">Pemerintah Hindia Belanda mendirikan Vereniging voor den Effectenhandel di Batavia (Jakarta). Bursa ini memperdagangkan saham perusahaan perkebunan dan obligasi Belanda. Ini menjadikan Indonesia memiliki salah satu bursa efek tertua di Asia Tenggara.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1925–1939</div>
+        <div class="timeline-heading">Ekspansi ke Surabaya & Semarang</div>
+        <div class="timeline-body">Bursa efek berkembang ke Surabaya (1925) dan Semarang (1925). Kegiatan bursa semakin ramai dengan masuknya saham berbagai perusahaan Belanda dan lokal. Namun Depresi Besar 1929 memukul keras kegiatan pasar modal.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1942–1952</div>
+        <div class="timeline-heading">Tutup di Masa Perang & Kemerdekaan</div>
+        <div class="timeline-body">Selama pendudukan Jepang (1942) dan masa revolusi kemerdekaan, semua bursa efek di Indonesia ditutup. Baru pada 1952 Bursa Efek Jakarta (BEJ) dibuka kembali oleh pemerintah Indonesia yang merdeka dengan memperdagangkan obligasi pemerintah.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1977</div>
+        <div class="timeline-heading">Reaktivasi Resmi oleh Pemerintah Soeharto</div>
+        <div class="timeline-body">Tanggal 10 Agustus 1977 ditetapkan sebagai hari kelahiran pasar modal modern Indonesia. BEJ diresmikan kembali oleh Presiden Soeharto di bawah pengawasan BAPEPAM (Badan Pelaksana Pasar Modal). Saham pertama yang listing adalah PT Semen Cibinong Tbk.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1988–1990</div>
+        <div class="timeline-heading">Deregulasi & Booming Pasar Modal</div>
+        <div class="timeline-body">Serangkaian paket kebijakan deregulasi membuka pintu lebar bagi investor asing dan mempermudah emisi efek. Jumlah emiten melonjak drastis. Bursa Efek Surabaya (BES) kembali dibuka tahun 1989 untuk mendukung pasar obligasi dan derivatif.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1995</div>
+        <div class="timeline-heading">Implementasi JATS (Sistem Perdagangan Otomatis)</div>
+        <div class="timeline-body">BEJ mengimplementasikan Jakarta Automated Trading System (JATS) — sistem perdagangan berbasis komputer yang menggantikan lantai bursa manual. Indonesia menjadi salah satu bursa Asia pertama yang sepenuhnya terkomputerisasi.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1997–1998</div>
+        <div class="timeline-heading">Krisis Moneter Asia</div>
+        <div class="timeline-body">Krisis keuangan Asia 1997–1998 menghancurkan pasar modal Indonesia. IHSG terjun bebas dari 740 ke level terendah 256. Ratusan perusahaan bangkrut, rupiah anjlok drastis, dan kepercayaan investor asing menguap hampir sepenuhnya.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2007</div>
+        <div class="timeline-heading">Penggabungan BEJ & BES → Bursa Efek Indonesia (BEI)</div>
+        <div class="timeline-body">Tanggal 30 November 2007, Bursa Efek Jakarta (BEJ) dan Bursa Efek Surabaya (BES) resmi bergabung menjadi Bursa Efek Indonesia (BEI / IDX). Penyatuan ini bertujuan meningkatkan efisiensi dan daya saing di tingkat regional.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2020–2023</div>
+        <div class="timeline-heading">Era Investor Ritel & Digital</div>
+        <div class="timeline-body">Pandemi COVID-19 secara paradoks mendorong lonjakan investor baru. Jumlah investor pasar modal menembus 10 juta SID (Single Investor Identification) pada 2022, didominasi generasi milenial dan Gen Z. Platform sekuritas digital dan edukasi online menjadi katalis utama.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2024–Kini</div>
+        <div class="timeline-heading">Transformasi Digital & Pasar Karbon</div>
+        <div class="timeline-body">BEI terus berinovasi dengan meluncurkan Bursa Karbon Indonesia (IDXCarbon) tahun 2023 — satu-satunya di Asia Tenggara. Sistem JATS Next-G diperbarui, papan SPAC diluncurkan, dan BEI mendorong lebih banyak UMKM untuk IPO.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── MODUL 2: INDEKS ─── -->
+  <div class="section" id="indeks">
+    <div class="section-eyebrow">📊 Modul 2</div>
+    <h2 class="section-title">Jenis Indeks Pasar Saham Indonesia</h2>
+    <p class="section-lead">BEI memiliki berbagai indeks yang mengukur kinerja kelompok saham tertentu. Memahami indeks membantu investor memilih "benchmark" portofolio yang tepat.</p>
+
+    <table class="index-table">
+      <thead>
+        <tr>
+          <th>Nama Indeks</th>
+          <th>Kode</th>
+          <th>Deskripsi</th>
+          <th>Jenis</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Indeks Harga Saham Gabungan</strong></td>
+          <td><span class="badge badge-gold">IHSG</span></td>
+          <td>Mengukur kinerja seluruh saham yang tercatat di BEI. Indeks acuan utama pasar modal Indonesia, dihitung sejak 10 Agustus 1982 dengan nilai dasar 100.</td>
+          <td>Komposit</td>
+        </tr>
+        <tr>
+          <td><strong>LQ45</strong></td>
+          <td><span class="badge badge-blue">LQ45</span></td>
+          <td>45 saham dengan likuiditas tertinggi dan kapitalisasi pasar besar. Mewakili sekitar 70% total kapitalisasi BEI. Direview setiap 6 bulan.</td>
+          <td>Likuiditas</td>
+        </tr>
+        <tr>
+          <td><strong>IDX30</strong></td>
+          <td><span class="badge badge-blue">IDX30</span></td>
+          <td>30 saham unggulan dengan likuiditas dan fundamental terbaik. Lebih selektif dari LQ45, cocok untuk referensi ETF dan reksa dana.</td>
+          <td>Blue Chip</td>
+        </tr>
+        <tr>
+          <td><strong>IDX80</strong></td>
+          <td><span class="badge badge-blue">IDX80</span></td>
+          <td>80 saham yang lebih luas dari IDX30, mencakup saham mid-cap potensial dengan likuiditas baik.</td>
+          <td>Mid-Large Cap</td>
+        </tr>
+        <tr>
+          <td><strong>Indeks Bisnis-27</strong></td>
+          <td><span class="badge badge-gold">BISNIS27</span></td>
+          <td>27 saham pilihan berdasarkan rekomendasi Bisnis Indonesia bersama BEI, dinilai dari fundamental dan tata kelola perusahaan.</td>
+          <td>Fundamental</td>
+        </tr>
+        <tr>
+          <td><strong>Indeks Sri-Kehati</strong></td>
+          <td><span class="badge badge-green">SRIKEHATI</span></td>
+          <td>25 saham yang memenuhi kriteria lingkungan (Environmental), sosial (Social), dan tata kelola (Governance) — indeks ESG pertama di Indonesia.</td>
+          <td>ESG</td>
+        </tr>
+        <tr>
+          <td><strong>IDX Sektor (11 Indeks)</strong></td>
+          <td><span class="badge badge-green">IDXSECTOR</span></td>
+          <td>BEI mengklasifikasikan saham ke dalam 11 sektor: Energi, Bahan Baku, Industri, Consumer Non-Siklikal, Consumer Siklikal, Kesehatan, Keuangan, Properti, Teknologi, Infrastruktur, dan Transportasi.</td>
+          <td>Sektoral</td>
+        </tr>
+        <tr>
+          <td><strong>IDX High Dividend 20</strong></td>
+          <td><span class="badge badge-gold">IDXHIDIV20</span></td>
+          <td>20 saham dengan yield dividen tertinggi dan konsisten. Ideal untuk investor yang mencari penghasilan pasif dari dividen.</td>
+          <td>Dividen</td>
+        </tr>
+        <tr>
+          <td><strong>MSCI Indonesia</strong></td>
+          <td><span class="badge badge-blue">MSCI ID</span></td>
+          <td>Indeks internasional yang melacak saham-saham Indonesia dalam standar global MSCI. Dijadikan acuan investor asing untuk investasi di emerging market Indonesia.</td>
+          <td>Internasional</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box gold" style="margin-top: 24px;">
+      <div class="info-box-title">💡 Tips Pemula</div>
+      <p>Untuk investor ritel pemula, IHSG dan LQ45 adalah dua indeks yang paling penting untuk dipantau setiap hari. LQ45 mencerminkan "mood" investor institusi dan asing, sementara IHSG memberikan gambaran keseluruhan pasar.</p>
+    </div>
+  </div>
+
+  <!-- ─── MODUL 3: HITUNG IHSG ─── -->
+  <div class="section" id="ihsg-calc">
+    <div class="section-eyebrow">🔢 Modul 3</div>
+    <h2 class="section-title">Cara Menghitung Nilai Pasar, Nilai Dasar & IHSG</h2>
+    <p class="section-lead">IHSG bukan sekadar angka — ada formula matematis di baliknya. Memahami cara perhitungannya membantumu membaca pergerakan indeks dengan lebih cerdas.</p>
+
+    <h3 style="font-size:18px;font-weight:700;color:var(--navy);margin-bottom:12px;">1. Nilai Pasar (Market Capitalization)</h3>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;">Nilai Pasar adalah total nilai seluruh saham beredar suatu emiten berdasarkan harga pasar saat ini. Ini mencerminkan "harga beli" keseluruhan perusahaan di mata pasar.</p>
+
+    <div class="formula-box">
+      <div class="formula-label">Formula Nilai Pasar</div>
+      <div class="formula-text">Nilai Pasar = Harga Saham × Jumlah Saham Beredar</div>
+      <div class="formula-note">
+        Contoh: BBCA harga Rp9.800/saham × 24,6 miliar lembar = ±Rp241 Triliun
+      </div>
+    </div>
+
+    <h3 style="font-size:18px;font-weight:700;color:var(--navy);margin:28px 0 12px;">2. Nilai Dasar (Base Value)</h3>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;">Nilai Dasar adalah nilai pasar historis dari seluruh saham pada titik referensi awal (10 Agustus 1982 dengan nilai 100). Nilai Dasar disesuaikan setiap ada aksi korporasi seperti IPO, stock split, right issue, atau delisting — tapi bukan karena perubahan harga pasar biasa.</p>
+
+    <div class="formula-box">
+      <div class="formula-label">Formula Nilai Dasar (Penyesuaian)</div>
+      <div class="formula-text">Nilai Dasar Baru = Nilai Dasar Lama × (NP Lama + ΔNP) / NP Lama</div>
+      <div class="formula-note">
+        NP = Nilai Pasar | ΔNP = Perubahan Nilai Pasar karena aksi korporasi<br>
+        Nilai Dasar hanya berubah saat ada aksi korporasi, bukan saat harga naik/turun biasa.
+      </div>
+    </div>
+
+    <h3 style="font-size:18px;font-weight:700;color:var(--navy);margin:28px 0 12px;">3. Formula IHSG</h3>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;">IHSG menggunakan metode <strong>Capitalization-Weighted Index</strong> — setiap saham punya bobot sesuai proporsi nilai pasarnya terhadap total pasar.</p>
+
+    <div class="formula-box">
+      <div class="formula-label">Formula IHSG</div>
+      <div class="formula-text">IHSG = (Total Nilai Pasar Semua Saham / Nilai Dasar) × 100</div>
+      <div class="formula-note">
+        Nilai Dasar awal = 100 pada 10 Agustus 1982<br>
+        Jika IHSG = 7.245 → nilai pasar total saham BEI saat ini = 72,45× lipat nilai dasar awal
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:24px;">
+      <div class="card-title" style="font-size:16px;margin-bottom:16px;">📐 Contoh Perhitungan Sederhana (3 Saham Hipotetis)</div>
+      <table class="ratio-table">
+        <thead>
+          <tr>
+            <th>Saham</th>
+            <th>Harga (Rp)</th>
+            <th>Lembar Beredar</th>
+            <th>Nilai Pasar (Rp)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="ratio-name">AABB</td><td>1.000</td><td>1.000.000.000</td><td>1.000.000.000.000</td></tr>
+          <tr><td class="ratio-name">CCDD</td><td>2.500</td><td>500.000.000</td><td>1.250.000.000.000</td></tr>
+          <tr><td class="ratio-name">EEFF</td><td>800</td><td>2.000.000.000</td><td>1.600.000.000.000</td></tr>
+          <tr style="background:var(--surface3)"><td><strong>TOTAL</strong></td><td colspan="2"><strong>Total Nilai Pasar</strong></td><td><strong>3.850.000.000.000</strong></td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:16px;font-size:13px;color:var(--text-muted);line-height:1.7;">
+        Jika Nilai Dasar = Rp2.000.000.000.000 (di awal pasar dibentuk):<br>
+        <strong style="color:var(--navy);">IHSG = (Rp3,85 T / Rp2,00 T) × 100 = <span style="color:var(--emerald);">192,5</span></strong>
+        <br>Artinya pasar sudah naik 92,5% dari basis awal.
+      </div>
+    </div>
+
+    <!-- KALKULATOR IHSG -->
+    <div class="calc-box" id="calc-ihsg">
+      <div class="calc-head">
+        <span class="calc-head-tag">Kalkulator</span>
+        <span class="calc-head-title">Nilai Pasar, Nilai Dasar & IHSG saat Saham Naik</span>
+      </div>
+      <div class="calc-body" oninput="hitungIhsg()">
+        <p class="calc-hint">Masukkan harga awal, persentase kenaikan (isi negatif untuk turun), dan jumlah lembar beredar tiap saham. Kalkulator menghitung nilai pasar sebelum &amp; sesudah kenaikan, penyesuaian nilai dasar (jika ada aksi korporasi), dan IHSG baru. Harga baru dihitung tanpa pembulatan fraksi harga BEI.</p>
+        <div class="calc-scroll">
+          <table class="calc-table">
+            <thead>
+              <tr>
+                <th>Kode</th><th>Harga Awal (Rp)</th><th>Kenaikan (%)</th><th>Lembar Beredar</th>
+                <th>Harga Baru</th><th>Nilai Pasar Awal</th><th>Nilai Pasar Baru</th><th>Kontribusi ke IHSG</th><th></th>
+              </tr>
+            </thead>
+            <tbody id="ihsgRows"></tbody>
+          </table>
+        </div>
+        <div class="calc-actions">
+          <button type="button" class="calc-btn" onclick="addIhsgRow('', '', '', ''); hitungIhsg();">+ Tambah Saham</button>
+          <button type="button" class="calc-btn secondary" onclick="resetIhsg()">Isi Contoh</button>
+        </div>
+        <div class="calc-grid" style="margin-top:20px;">
+          <div class="calc-field">
+            <label for="ihsgND">Nilai Dasar Awal (Rp)</label>
+            <input type="number" min="0" class="calc-input" id="ihsgND" placeholder="mis. 2000000000000">
+            <small>Kosongkan jika kamu hanya tahu IHSG awal.</small>
+          </div>
+          <div class="calc-field">
+            <label for="ihsgBase">IHSG Awal (opsional)</label>
+            <input type="number" min="0" step="any" class="calc-input" id="ihsgBase" placeholder="mis. 7245">
+            <small>Dipakai untuk menurunkan Nilai Dasar bila kolom di kiri kosong.</small>
+          </div>
+          <div class="calc-field">
+            <label for="ihsgDNP">Tambahan Nilai Pasar Aksi Korporasi (Rp)</label>
+            <input type="number" step="any" class="calc-input" id="ihsgDNP" value="0">
+            <small>ΔNP dari IPO / right issue / listing baru. Isi 0 jika tidak ada.</small>
+          </div>
+        </div>
+        <div id="ihsgResults" class="calc-results"></div>
+        <div id="ihsgSteps"></div>
+      </div>
+    </div>
+
+    <div class="info-box green" style="margin-top:20px;">
+      <div class="info-box-title">🎯 Mengapa Capitalization-Weighted?</div>
+      <p>Saham dengan kapitalisasi besar (BBCA, BBRI, TLKM) punya dampak lebih besar terhadap IHSG dibanding saham kecil. Itulah mengapa ketika BBCA naik 1%, IHSG bisa bergerak lebih besar dibanding saham papan pengembangan naik 5%.</p>
+    </div>
+  </div>
+
+  <!-- ─── MODUL 4: APA ITU SAHAM ─── -->
+  <div class="section" id="pengenalan">
+    <div class="section-eyebrow">💼 Modul 4</div>
+    <h2 class="section-title">Apa Itu Saham?</h2>
+    <p class="section-lead">Saham bukan sekadar angka di layar — ini adalah bukti kepemilikan nyata atas sebuah bisnis. Pahami konsep dasarnya dulu sebelum masuk lebih dalam.</p>
+
+    <div class="highlight-block">
+      "Membeli saham berarti kamu menjadi pemilik sebagian kecil dari sebuah perusahaan — bersama jutaan pemegang saham lainnya."
+    </div>
+
+    <div class="two-col-text" style="margin-bottom:28px;">
+      <p>Ketika sebuah perusahaan membutuhkan modal besar — untuk ekspansi, membayar hutang, atau mendanai riset — mereka bisa memilih untuk menjual sebagian kepemilikan kepada publik melalui proses IPO (Initial Public Offering). Setiap "potongan kepemilikan" yang dijual inilah yang disebut <strong>saham (stock / equity)</strong>.</p>
+      <p>Sebagai pemegang saham, kamu berhak atas sebagian keuntungan perusahaan (dividen), berhak memberikan suara dalam RUPS (Rapat Umum Pemegang Saham), dan berhak atas aset perusahaan jika dilikuidasi — setelah semua kewajiban hutang dilunasi.</p>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon" style="background:#EBF3FC;">💰</div>
+        <div class="card-title">Capital Gain</div>
+        <div class="card-text">Keuntungan dari selisih harga beli dan harga jual saham. Jika beli Rp1.000 dan jual Rp1.500, capital gain = Rp500/lembar. Ini sumber keuntungan utama bagi trader jangka pendek.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:#E8F7F2;">🎁</div>
+        <div class="card-title">Dividen</div>
+        <div class="card-text">Bagian laba perusahaan yang dibagikan kepada pemegang saham, biasanya setahun sekali. Besarnya tergantung kebijakan direksi dan RUPS. Dividen yield = dividen per lembar ÷ harga saham × 100%.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:#FFF3CC;">📜</div>
+        <div class="card-title">Hak Suara (RUPS)</div>
+        <div class="card-text">Pemegang saham berhak hadir dan memberikan suara dalam RUPS. Semakin banyak saham yang dimiliki, semakin besar pengaruhnya dalam pengambilan keputusan strategis perusahaan.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:#FDECEA;">⚠️</div>
+        <div class="card-title">Risiko Investasi</div>
+        <div class="card-text">Harga saham bisa naik dan turun setiap saat. Dalam kasus kebangkrutan, pemegang saham biasa adalah pihak terakhir yang mendapat penggantian — setelah kreditur dan pemegang saham preferen.</div>
+      </div>
+    </div>
+
+    <div class="info-box navy" style="margin-top:24px;">
+      <div class="info-box-title">🔑 Mekanisme Perdagangan di BEI</div>
+      <p>Saham diperdagangkan di BEI pada hari Senin–Jumat. Sesi I: 09.00–11.30 WIB, Sesi II: 13.30–16.00 WIB. Satuan perdagangan adalah "lot" (1 lot = 100 lembar saham). Harga bergerak dalam satuan "tick" sesuai fraksi harga yang ditetapkan BEI. Setiap transaksi dikenakan biaya komisi broker dan pajak penjualan 0,1%.</p>
+    </div>
+  </div>
+
+  <!-- ─── MODUL 5: JENIS SAHAM ─── -->
+  <div class="section" id="jenis">
+    <div class="section-eyebrow">🗂️ Modul 5</div>
+    <h2 class="section-title">Jenis-jenis Saham di Pasar Indonesia</h2>
+    <p class="section-lead">Tidak semua saham sama. Pahami berbagai kategorisasi saham agar kamu bisa memilih yang sesuai profil risiko dan tujuan investasimu.</p>
+
+    <h3 style="font-size:17px;font-weight:700;color:var(--navy);margin-bottom:16px;">Berdasarkan Hak Kepemilikan</h3>
+    <div class="type-grid" style="margin-bottom:32px;">
+      <div class="type-card common">
+        <div class="type-card-label" style="color:var(--blue);">Saham Biasa</div>
+        <div class="type-card-title">Common Stock</div>
+        <div class="type-card-text">Jenis saham paling umum. Pemegang mendapat hak suara di RUPS dan berhak atas dividen. Namun jika perusahaan bangkrut, pemegang saham biasa mendapat prioritas terakhir. Sebagian besar saham di BEI adalah jenis ini. Kode saham biasa tidak memiliki imbuhan khusus.</div>
+      </div>
+      <div class="type-card preferred">
+        <div class="type-card-label" style="color:#8B6A1A;">Saham Preferen</div>
+        <div class="type-card-title">Preferred Stock</div>
+        <div class="type-card-text">Mendapat prioritas dividen tetap sebelum saham biasa dibayar. Dalam likuidasi, mendahului pemegang saham biasa. Namun umumnya tidak punya hak suara. Di BEI relatif jarang — lebih umum di pasar AS. Beberapa BUMN memiliki saham preferen yang dipegang pemerintah.</div>
+      </div>
+    </div>
+
+    <h3 style="font-size:17px;font-weight:700;color:var(--navy);margin-bottom:16px;">Berdasarkan Karakteristik Bisnis</h3>
+    <div class="type-grid" style="margin-bottom:32px;">
+      <div class="type-card growth">
+        <div class="type-card-label" style="color:var(--emerald);">Growth Stock</div>
+        <div class="type-card-title">Saham Pertumbuhan</div>
+        <div class="type-card-text">Perusahaan yang tumbuh lebih cepat dari rata-rata industri. Biasanya tidak membagikan dividen besar karena laba diinvestasikan kembali untuk ekspansi. Valuasi relatif tinggi (P/E ratio tinggi). Contoh di BEI: sektor teknologi, fintech, dan consumer goods modern.</div>
+      </div>
+      <div class="type-card value">
+        <div class="type-card-label" style="color:#9B59B6;">Value Stock</div>
+        <div class="type-card-title">Saham Nilai</div>
+        <div class="type-card-text">Saham yang diperdagangkan di bawah nilai intrinsiknya — "murah" menurut analisis fundamental. P/E ratio rendah, P/BV rendah. Strategi "value investing" Warren Buffett berbasis mencari saham jenis ini. Di Indonesia banyak ditemukan di sektor perbankan dan komoditas saat pasar bearish.</div>
+      </div>
+      <div class="type-card cyclical">
+        <div class="type-card-label" style="color:#E67E22;">Cyclical Stock</div>
+        <div class="type-card-title">Saham Siklikal</div>
+        <div class="type-card-text">Kinerjanya sangat dipengaruhi siklus ekonomi. Naik saat ekonomi booming, turun saat resesi. Contoh: sektor otomotif (ASII), properti, komoditas (PTBA, ADRO), dan perbankan. Timing investasi sangat krusial untuk saham jenis ini.</div>
+      </div>
+      <div class="type-card defensive">
+        <div class="type-card-label" style="color:#27AE60;">Defensive Stock</div>
+        <div class="type-card-title">Saham Defensif</div>
+        <div class="type-card-text">Cenderung stabil meski ekonomi melambat karena menjual kebutuhan pokok. Contoh: sektor consumer staples (UNVR, ICBP), farmasi (KLBF, KAEF), dan utilitas. Cocok untuk investor yang mengutamakan keamanan portofolio di tengah ketidakpastian.</div>
+      </div>
+    </div>
+
+    <h3 style="font-size:17px;font-weight:700;color:var(--navy);margin-bottom:16px;">Berdasarkan Papan Pencatatan di BEI</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title">📊 Papan Utama</div>
+        <div class="card-text">Untuk perusahaan besar dan mapan. Persyaratan: aset minimal Rp250 miliar, profitabilitas konsisten, dan track record operasional panjang. Contoh: BBCA, TLKM, ASII.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">📈 Papan Pengembangan</div>
+        <div class="card-text">Untuk perusahaan menengah yang masih dalam fase pertumbuhan atau baru profitabel. Persyaratan lebih longgar. Potensi growth tinggi tapi risiko lebih besar.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">🚀 Papan Akselerasi</div>
+        <div class="card-text">Diluncurkan 2019 untuk startup dan UKM. Persyaratan paling ringan. Likuiditas rendah, spread lebar, cocok hanya untuk investor berpengalaman dengan toleransi risiko tinggi.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── MODUL 6: FUNDAMENTAL ─── -->
+  <div class="section" id="fundamental">
+    <div class="section-eyebrow">🔍 Modul 6</div>
+    <h2 class="section-title">Analisis Fundamental — Dari Nol</h2>
+    <p class="section-lead">Analisis fundamental menjawab pertanyaan: "Apakah bisnis ini bagus dan apakah harganya wajar?" Ini adalah pondasi investasi jangka panjang.</p>
+
+    <div class="info-box navy">
+      <div class="info-box-title">📌 Apa itu Analisis Fundamental?</div>
+      <p>Analisis fundamental adalah metode mengevaluasi saham berdasarkan kondisi keuangan dan bisnis perusahaan secara nyata — bukan pergerakan harga di chart. Tujuannya adalah menemukan <strong>nilai intrinsik</strong> (nilai sebenarnya) sebuah perusahaan, lalu membandingkannya dengan harga pasar. Jika harga pasar < nilai intrinsik → saham undervalued → kandidat beli.</p>
+    </div>
+
+    <h3 style="font-size:18px;font-weight:700;color:var(--navy);margin:32px 0 16px;">Tiga Laporan Keuangan Utama</h3>
+    <div class="card-grid" style="margin-bottom:32px;">
+      <div class="card">
+        <div class="card-icon" style="background:var(--blue-pale);font-size:28px;">📃</div>
+        <div class="card-title">Laporan Laba Rugi</div>
+        <div class="card-text">Menunjukkan pendapatan, beban, dan laba/rugi perusahaan dalam periode tertentu. Baca: Revenue → Gross Profit → EBIT → Net Income. Perhatikan tren pertumbuhan revenue dan margin laba bersih.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--emerald-pale);font-size:28px;">⚖️</div>
+        <div class="card-title">Neraca (Balance Sheet)</div>
+        <div class="card-text">Snapshot kondisi keuangan pada satu titik waktu: Aset = Liabilitas + Ekuitas. Cek rasio hutang, likuiditas, dan kualitas aset. Ekuitas yang terus tumbuh adalah sinyal positif.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--gold-pale);font-size:28px;">💸</div>
+        <div class="card-title">Laporan Arus Kas</div>
+        <div class="card-text">Menunjukkan aliran uang tunai nyata: Operasional, Investasi, dan Pendanaan. Cash flow dari operasi yang positif dan konsisten lebih penting dari angka laba bersih yang bisa dimanipulasi akuntansi.</div>
+      </div>
+    </div>
+
+    <h3 style="font-size:18px;font-weight:700;color:var(--navy);margin-bottom:16px;">Rasio Fundamental Wajib Dikuasai</h3>
+    <table class="ratio-table">
+      <thead>
+        <tr><th>Rasio</th><th>Cara Baca</th><th>Ideal</th><th>Waspada</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="ratio-name">Price to Earnings (P/E)</span><span class="ratio-formula">Harga Saham ÷ EPS</span></td>
+          <td>Berapa kali investor membayar vs laba per saham. Saham "mahal" vs "murah" relatif terhadap laba.</td>
+          <td class="ratio-good">8–15x (value)</td>
+          <td class="ratio-bad">&gt;30x tanpa growth tinggi</td>
+        </tr>
+        <tr>
+          <td><span class="ratio-name">Price to Book (P/BV)</span><span class="ratio-formula">Harga Saham ÷ BV per Saham</span></td>
+          <td>Harga pasar vs nilai buku aset bersih. P/BV &lt; 1 = saham diperdagangkan di bawah nilai aset bersihnya.</td>
+          <td class="ratio-good">&lt;1,5x (value)</td>
+          <td class="ratio-bad">&gt;5x untuk sektor non-growth</td>
+        </tr>
+        <tr>
+          <td><span class="ratio-name">Return on Equity (ROE)</span><span class="ratio-formula">Net Income ÷ Ekuitas × 100%</span></td>
+          <td>Seberapa efisien perusahaan menghasilkan laba dari modal yang ditanamkan pemegang saham.</td>
+          <td class="ratio-good">&gt;15% konsisten</td>
+          <td class="ratio-bad">&lt;8% atau terus turun</td>
+        </tr>
+        <tr>
+          <td><span class="ratio-name">Return on Assets (ROA)</span><span class="ratio-formula">Net Income ÷ Total Aset × 100%</span></td>
+          <td>Efisiensi perusahaan menggunakan seluruh aset untuk menghasilkan laba. Cocok membandingkan antar industri.</td>
+          <td class="ratio-good">&gt;5% (non-bank)</td>
+          <td class="ratio-bad">&lt;1%</td>
+        </tr>
+        <tr>
+          <td><span class="ratio-name">Debt to Equity (DER)</span><span class="ratio-formula">Total Hutang ÷ Total Ekuitas</span></td>
+          <td>Seberapa besar perusahaan bergantung pada hutang vs modal sendiri. DER tinggi = leverage tinggi = risiko tinggi.</td>
+          <td class="ratio-good">&lt;1x (non-bank)</td>
+          <td class="ratio-bad">&gt;3x (non-bank)</td>
+        </tr>
+        <tr>
+          <td><span class="ratio-name">Current Ratio</span><span class="ratio-formula">Aset Lancar ÷ Liabilitas Lancar</span></td>
+          <td>Kemampuan perusahaan membayar kewajiban jangka pendek dengan aset lancar. Likuiditas jangka pendek.</td>
+          <td class="ratio-good">&gt;1,5x</td>
+          <td class="ratio-bad">&lt;1x (risiko gagal bayar)</td>
+        </tr>
+        <tr>
+          <td><span class="ratio-name">Earnings Per Share (EPS)</span><span class="ratio-formula">Net Income ÷ Jumlah Saham Beredar</span></td>
+          <td>Laba bersih per lembar saham. Pertumbuhan EPS YoY yang konsisten adalah sinyal bisnis yang sehat.</td>
+          <td class="ratio-good">Tren naik konsisten</td>
+          <td class="ratio-bad">EPS negatif atau anjlok</td>
+        </tr>
+        <tr>
+          <td><span class="ratio-name">Dividend Yield</span><span class="ratio-formula">DPS ÷ Harga Saham × 100%</span></td>
+          <td>Persentase imbal hasil dari dividen. Relevan untuk investor income yang butuh arus kas rutin.</td>
+          <td class="ratio-good">3–8% (stabil)</td>
+          <td class="ratio-bad">&gt;15% (mungkin tidak berkelanjutan)</td>
+        </tr>
+        <tr>
+          <td><span class="ratio-name">Net Profit Margin</span><span class="ratio-formula">Net Income ÷ Revenue × 100%</span></td>
+          <td>Berapa persen dari setiap rupiah pendapatan yang menjadi laba bersih. Mencerminkan efisiensi operasional.</td>
+          <td class="ratio-good">&gt;10%</td>
+          <td class="ratio-bad">&lt;3% atau terus menyusut</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- KALKULATOR RASIO FUNDAMENTAL -->
+    <div class="calc-box" id="calc-fund">
+      <div class="calc-head">
+        <span class="calc-head-tag">Kalkulator</span>
+        <span class="calc-head-title">Semua Rasio Fundamental Sekaligus</span>
+      </div>
+      <div class="calc-body" oninput="hitungFund()">
+        <p class="calc-hint">Isi angka dari laporan keuangan dan harga saham. Pilih satuan angka laporan keuangan agar tidak perlu menulis nol yang panjang. Kolom bertanda (opsional) hanya dipakai untuk rasio pertumbuhan. Rasio yang datanya belum lengkap akan tampak pudar.</p>
+        <div class="calc-grid" style="margin-bottom:16px;">
+          <div class="calc-field">
+            <label for="fUnit">Satuan angka laporan keuangan</label>
+            <select class="calc-select" id="fUnit">
+              <option value="1">Rupiah penuh</option>
+              <option value="1000000">Juta Rupiah</option>
+              <option value="1000000000" selected>Miliar Rupiah</option>
+              <option value="1000000000000">Triliun Rupiah</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label for="fShareUnit">Satuan jumlah saham beredar</label>
+            <select class="calc-select" id="fShareUnit">
+              <option value="1">Lembar</option>
+              <option value="1000000">Juta lembar</option>
+              <option value="1000000000" selected>Miliar lembar</option>
+            </select>
+          </div>
+        </div>
+        <div class="calc-grid" id="fundFields"></div>
+        <div class="calc-actions" style="margin-top:16px;">
+          <button type="button" class="calc-btn secondary" onclick="contohFund()">Isi Contoh</button>
+          <button type="button" class="calc-btn secondary" onclick="kosongFund()">Kosongkan</button>
+        </div>
+        <div id="fundWarn"></div>
+        <div id="fundResults" class="calc-results"></div>
+        <p class="calc-hint" style="margin-top:14px;margin-bottom:0;">Penilaian "Ideal / Waspada" mengikuti ambang pada tabel rasio di atas. Ambang ini panduan umum untuk perusahaan non-bank; bank punya karakter DER dan ROA yang berbeda, jadi bandingkan dengan perusahaan sejenis.</p>
+      </div>
+    </div>
+
+    <h3 style="font-size:18px;font-weight:700;color:var(--navy);margin:32px 0 16px;">Metode Valuasi Fundamental</h3>
+    <div class="analysis-method">
+      <div class="method-card">
+        <div class="method-number">1</div>
+        <div class="method-title">Discounted Cash Flow (DCF)</div>
+        <div class="method-desc">Menghitung nilai intrinsik berdasarkan proyeksi arus kas masa depan yang didiskontokan ke nilai sekarang. Metode paling akurat secara teori tapi butuh asumsi yang realistis. Rumus: Nilai Intrinsik = Σ (FCF / (1+r)^t).</div>
+      </div>
+      <div class="method-card">
+        <div class="method-number">2</div>
+        <div class="method-title">Relative Valuation (Komparasi)</div>
+        <div class="method-desc">Membandingkan rasio P/E, P/BV, EV/EBITDA antar saham dalam sektor yang sama. Jika rata-rata P/E sektor perbankan = 10x dan BBRI = 7x, maka BBRI relatif lebih murah dari peers-nya.</div>
+      </div>
+      <div class="method-card">
+        <div class="method-number">3</div>
+        <div class="method-title">Dividend Discount Model (DDM)</div>
+        <div class="method-desc">Cocok untuk saham yang rutin membayar dividen. Nilai intrinsik = Dividen Tahun Depan / (Cost of Equity – Growth Rate Dividen). Populer untuk menilai saham BUMN dan utilitas yang stabil.</div>
+      </div>
+      <div class="method-card">
+        <div class="method-number">4</div>
+        <div class="method-title">Asset-Based Valuation</div>
+        <div class="method-desc">Menghitung nilai perusahaan berdasarkan nilai aset bersih yang disesuaikan (Adjusted Net Asset Value / ANAV). Relevan untuk perusahaan properti, pertambangan, dan holding company yang asetnya tangible.</div>
+      </div>
+      <div class="method-card">
+        <div class="method-number">5</div>
+        <div class="method-title">Analisis SWOT & Moat</div>
+        <div class="method-desc">Evaluasi kualitatif: Strengths, Weaknesses, Opportunities, Threats. Cari perusahaan dengan "economic moat" — keunggulan kompetitif berkelanjutan seperti brand kuat (UNVR), lisensi monopoli, atau jaringan distribusi tak tertandingi.</div>
+      </div>
+      <div class="method-card">
+        <div class="method-number">6</div>
+        <div class="method-title">Analisis Top-Down vs Bottom-Up</div>
+        <div class="method-desc"><strong>Top-Down:</strong> mulai dari kondisi makroekonomi (GDP, inflasi, suku bunga BI) → sektor terbaik → saham terbaik di sektor itu. <strong>Bottom-Up:</strong> fokus langsung pada kualitas individual perusahaan tanpa mempedulikan kondisi makro jangka pendek.</div>
+      </div>
+    </div>
+
+    <div class="info-box green" style="margin-top:24px;">
+      <div class="info-box-title">✅ Checklist Fundamental Investor Pemula</div>
+      <p>Sebelum beli saham apapun, tanyakan: (1) Revenue tumbuh 3 tahun terakhir? (2) ROE konsisten di atas 12%? (3) DER tidak berlebihan? (4) Arus kas operasi positif? (5) Manajemen punya rekam jejak yang bersih? (6) Ada economic moat yang jelas? Jika 5 dari 6 terjawab "ya" — saham layak masuk watchlist analisis lebih lanjut.</p>
+    </div>
+  </div>
+
+  <!-- ─── MODUL 7: TEKNIKAL ─── -->
+  <div class="section" id="teknikal">
+    <div class="section-eyebrow">📉 Modul 7</div>
+    <h2 class="section-title">Analisis Teknikal — Dari Nol</h2>
+    <p class="section-lead">Analisis teknikal menjawab: "Kapan waktu terbaik untuk beli atau jual?" Ini adalah bahasa chart, pola harga, dan momentum pasar.</p>
+
+    <div class="info-box navy">
+      <div class="info-box-title">📌 Apa itu Analisis Teknikal?</div>
+      <p>Analisis teknikal adalah studi pergerakan harga historis dan volume perdagangan untuk memprediksi arah harga di masa depan. Prinsip dasarnya: <strong>(1) Harga mencerminkan semua informasi</strong>, <strong>(2) Harga bergerak dalam tren</strong>, <strong>(3) Sejarah cenderung berulang</strong> karena psikologi manusia yang konsisten.</p>
+    </div>
+
+    <!-- Candlestick visual -->
+    <div style="background:#0D1E33;border-radius:var(--radius);padding:24px;margin:24px 0;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;">Ilustrasi Chart Candlestick</div>
+      <div style="display:flex;align-items:flex-end;gap:6px;height:120px;justify-content:center;">
+        <div style="display:flex;flex-direction:column;align-items:center;"><div style="width:2px;height:18px;background:rgba(46,204,113,0.5);"></div><div style="width:14px;height:35px;background:#2ECC71;border-radius:2px;"></div><div style="width:2px;height:10px;background:rgba(46,204,113,0.5);"></div></div>
+        <div style="display:flex;flex-direction:column;align-items:center;"><div style="width:2px;height:10px;background:rgba(231,76,60,0.5);"></div><div style="width:14px;height:25px;background:#E74C3C;border-radius:2px;"></div><div style="width:2px;height:20px;background:rgba(231,76,60,0.5);"></div></div>
+        <div style="display:flex;flex-direction:column;align-items:center;"><div style="width:2px;height:25px;background:rgba(46,204,113,0.5);"></div><div style="width:14px;height:45px;background:#2ECC71;border-radius:2px;"></div><div style="width:2px;height:8px;background:rgba(46,204,113,0.5);"></div></div>
+        <div style="display:flex;flex-direction:column;align-items:center;"><div style="width:2px;height:8px;background:rgba(46,204,113,0.5);"></div><div style="width:14px;height:30px;background:#2ECC71;border-radius:2px;"></div><div style="width:2px;height:14px;background:rgba(46,204,113,0.5);"></div></div>
+        <div style="display:flex;flex-direction:column;align-items:center;"><div style="width:2px;height:15px;background:rgba(231,76,60,0.5);"></div><div style="width:14px;height:40px;background:#E74C3C;border-radius:2px;"></div><div style="width:2px;height:18px;background:rgba(231,76,60,0.5);"></div></div>
+        <div style="display:flex;flex-direction:column;align-items:center;"><div style="width:2px;height:20px;background:rgba(231,76,60,0.5);"></div><div style="width:14px;height:22px;background:#E74C3C;border-radius:2px;"></div><div style="width:2px;height:12px;background:rgba(231,76,60,0.5);"></div></div>
+        <div style="display:flex;flex-direction:column;align-items:center;"><div style="width:2px;height:28px;background:rgba(46,204,113,0.5);"></div><div style="width:14px;height:52px;background:#2ECC71;border-radius:2px;"></div><div style="width:2px;height:6px;background:rgba(46,204,113,0.5);"></div></div>
+        <div style="display:flex;flex-direction:column;align-items:center;"><div style="width:2px;height:12px;background:rgba(46,204,113,0.5);"></div><div style="width:14px;height:38px;background:#2ECC71;border-radius:2px;"></div><div style="width:2px;height:16px;background:rgba(46,204,113,0.5);"></div></div>
+      </div>
+      <div style="display:flex;gap:24px;justify-content:center;margin-top:14px;font-size:12px;color:rgba(255,255,255,0.5);">
+        <span style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;background:#2ECC71;border-radius:2px;display:inline-block;"></span>Bullish (naik) — Close &gt; Open</span>
+        <span style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;background:#E74C3C;border-radius:2px;display:inline-block;"></span>Bearish (turun) — Close &lt; Open</span>
+      </div>
+    </div>
+
+    <h3 style="font-size:18px;font-weight:700;color:var(--navy);margin:28px 0 16px;">Metode Analisis Teknikal Wajib Dikuasai</h3>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span>📏 Support & Resistance</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <p><strong>Support</strong> adalah area harga di mana tekanan beli cukup kuat untuk menghentikan penurunan harga. <strong>Resistance</strong> adalah area di mana tekanan jual menghalangi kenaikan lebih lanjut.</p>
+        <br><p>Strategi: Beli mendekati support, jual mendekati resistance. Ketika support tembus ke bawah, ia bisa berubah menjadi resistance (breakout bearish). Ketika resistance ditembus ke atas, ia menjadi support baru (breakout bullish). Gunakan setidaknya 2–3 titik konfirmasi untuk menentukan area S/R yang valid.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span>📈 Moving Average (MA)</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <p><strong>Simple Moving Average (SMA)</strong>: rata-rata harga penutupan selama N periode. <strong>Exponential Moving Average (EMA)</strong>: memberi bobot lebih besar pada data terbaru — lebih responsif.</p>
+        <br><p><strong>MA Populer:</strong> MA20 (tren jangka pendek), MA50 (tren menengah), MA200 (tren panjang). <strong>Golden Cross:</strong> MA50 memotong MA200 dari bawah ke atas = sinyal beli kuat. <strong>Death Cross:</strong> MA50 memotong MA200 dari atas ke bawah = sinyal jual/waspada.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span>⚡ RSI (Relative Strength Index)</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <p>RSI mengukur kecepatan dan perubahan pergerakan harga, menghasilkan angka antara 0–100. Dikembangkan J. Welles Wilder.</p>
+        <br><p><strong>Overbought (&gt;70):</strong> Harga sudah naik terlalu cepat, potensi koreksi. <strong>Oversold (&lt;30):</strong> Harga sudah turun terlalu cepat, potensi rebound. <strong>Divergensi RSI:</strong> harga naik tapi RSI turun = sinyal reversal bearish. Harga turun tapi RSI naik = sinyal reversal bullish. Periode default RSI = 14.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span>📊 MACD (Moving Average Convergence Divergence)</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <p>MACD terdiri dari: <strong>MACD Line</strong> (EMA12 - EMA26), <strong>Signal Line</strong> (EMA9 dari MACD Line), dan <strong>Histogram</strong> (selisih MACD dan Signal).</p>
+        <br><p><strong>Sinyal Beli:</strong> MACD Line memotong Signal Line dari bawah ke atas. <strong>Sinyal Jual:</strong> MACD Line memotong Signal Line dari atas ke bawah. <strong>Zero Line Cross:</strong> MACD melewati garis nol ke atas = konfirmasi bullish. MACD adalah indikator momentum dan trend-following sekaligus.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span>🎯 Bollinger Bands</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <p>Terdiri dari 3 garis: <strong>Middle Band</strong> (SMA20), <strong>Upper Band</strong> (SMA20 + 2×SD), <strong>Lower Band</strong> (SMA20 - 2×SD). Jarak antar band mencerminkan volatilitas.</p>
+        <br><p><strong>Squeeze:</strong> Band menyempit = volatilitas rendah, potensi breakout besar. <strong>Expansion:</strong> Band melebar = volatilitas tinggi. Strategi: beli saat harga menyentuh lower band (dalam tren naik), jual saat menyentuh upper band. <strong>Bollinger Bounce</strong> vs <strong>Bollinger Breakout</strong> adalah dua strategi berbeda yang kontradiktif — pilih sesuai kondisi pasar.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span>🌊 Fibonacci Retracement</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <p>Berdasarkan rasio matematika deret Fibonacci (23,6% — 38,2% — 50% — 61,8% — 78,6%). Digunakan untuk mengidentifikasi level support/resistance potensial setelah suatu gerakan harga besar.</p>
+        <br><p>Cara pakai: tarik dari titik swing low ke swing high (uptrend) atau swing high ke swing low (downtrend). Level 38,2% dan 61,8% adalah yang paling sering menjadi area support/resistance signifikan. Sangat populer di kalangan trader Indonesia untuk menentukan entry point setelah pullback.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span>🕯️ Pola Candlestick Penting</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <p><strong>Reversal Bullish:</strong> Hammer, Inverted Hammer, Bullish Engulfing, Morning Star, Piercing Line, Three White Soldiers.</p>
+        <br><p><strong>Reversal Bearish:</strong> Shooting Star, Hanging Man, Bearish Engulfing, Evening Star, Dark Cloud Cover, Three Black Crows.</p>
+        <br><p><strong>Continuation:</strong> Doji (kebimbangan pasar), Spinning Top, Rising/Falling Three Methods. Penting: pola candlestick tidak berdiri sendiri — selalu konfirmasi dengan volume dan indikator lain sebelum mengambil keputusan trading.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span>📐 Pola Chart (Chart Patterns)</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <p><strong>Reversal Patterns:</strong> Head & Shoulders (H&S), Inverse H&S, Double Top, Double Bottom, Triple Top/Bottom. Formasi ini mengindikasikan pembalikan tren utama.</p>
+        <br><p><strong>Continuation Patterns:</strong> Flag, Pennant, Triangle (Ascending/Descending/Symmetrical), Cup & Handle. Mengindikasikan jeda sementara sebelum tren utama berlanjut. Target harga setelah breakout biasanya diukur dari tinggi formasi (measured move).</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span>📦 Analisis Volume</span>
+        <span class="accordion-arrow">▾</span>
+      </div>
+      <div class="accordion-body">
+        <p>Volume adalah "bahan bakar" pergerakan harga. Kenaikan harga dengan volume tinggi = kuat dan valid. Kenaikan harga dengan volume rendah = lemah, berpotensi false breakout.</p>
+        <br><p><strong>On Balance Volume (OBV):</strong> Indikator kumulatif volume yang mengkonfirmasi tren. <strong>Volume Divergence:</strong> harga naik tapi volume turun = tren melemah. <strong>Volume Spike:</strong> lonjakan volume ekstrem sering menandai titik balik (exhaustion). Pepatah teknikal: "Volume leads price."</p>
+      </div>
+    </div>
+
+    <!-- KALKULATOR MOVING AVERAGE -->
+    <div class="calc-box" id="calc-ma">
+      <div class="calc-head">
+        <span class="calc-head-tag">Kalkulator</span>
+        <span class="calc-head-title">Moving Average: SMA, MA Cross, EMA &amp; WMA</span>
+      </div>
+      <div class="calc-body" oninput="hitungMA()">
+        <p class="calc-hint">Tempel harga penutupan (close) dari yang paling lama ke yang terbaru, dipisah spasi, koma, titik koma, atau baris baru. Gunakan titik untuk desimal. MA dasar sama dengan SMA, jadi kalkulator ini juga menghitung <strong>MA Cross</strong> (MA cepat vs MA lambat) untuk mendeteksi Golden Cross dan Death Cross.</p>
+        <div class="calc-field" style="margin-bottom:14px;">
+          <label for="maData">Data harga penutupan</label>
+          <textarea class="calc-textarea" id="maData" placeholder="9500 9600 9550 9700 9800 ..."></textarea>
+        </div>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label for="maPeriod">Periode MA (N)</label>
+            <input type="number" min="1" step="1" class="calc-input" id="maPeriod" value="5">
+            <small>Dipakai untuk SMA, EMA, WMA, dan sebagai MA cepat.</small>
+          </div>
+          <div class="calc-field">
+            <label for="maSlow">Periode MA lambat (opsional)</label>
+            <input type="number" min="1" step="1" class="calc-input" id="maSlow" value="10">
+            <small>Harus lebih besar dari N untuk MA Cross.</small>
+          </div>
+        </div>
+        <div class="calc-actions" style="margin-top:14px;">
+          <button type="button" class="calc-btn secondary" onclick="contohMA()">Isi Contoh</button>
+          <button type="button" class="calc-btn secondary" onclick="document.getElementById('maData').value='';hitungMA();">Kosongkan</button>
+        </div>
+        <div id="maResults" class="calc-results"></div>
+        <div id="maChart"></div>
+        <div id="maSteps"></div>
+        <div id="maTable"></div>
+      </div>
+    </div>
+
+    <div class="info-box gold" style="margin-top:20px;">
+      <div class="info-box-title">⚠️ Penting: Teknikal Bukan Kristal Bola</div>
+      <p>Tidak ada indikator teknikal yang 100% akurat. Gunakan setidaknya 2–3 indikator berbeda untuk konfirmasi (confluence). Selalu kombinasikan dengan manajemen risiko: tentukan stop loss sebelum masuk, dan jangan pernah mengambil risiko lebih dari 1–2% portofolio per trade.</p>
+    </div>
+  </div>
+
+  <!-- ─── MODUL 8: PSIKOLOGI ─── -->
+  <div class="section" id="psikologi">
+    <div class="section-eyebrow">🧠 Modul 8</div>
+    <h2 class="section-title">Psikologi Berinvestasi & Trading Saham</h2>
+    <p class="section-lead">Analisis terbaik pun bisa sia-sia jika emosi mengendalikan keputusan. Inilah modul yang paling sering diabaikan — padahal paling menentukan.</p>
+
+    <div class="highlight-block">
+      "Musuh terbesar investor adalah cermin — bukan pasar."
+      <div style="font-size:14px;color:rgba(255,255,255,0.5);margin-top:8px;font-family:'Plus Jakarta Sans',sans-serif;font-style:normal;">— Adaptasi dari Benjamin Graham</div>
+    </div>
+
+    <h3 style="font-size:18px;font-weight:700;color:var(--navy);margin:28px 0 16px;">Bias Kognitif yang Merusak Keputusan Investasi</h3>
+    <div class="psych-grid">
+      <div class="psych-card">
+        <div class="psych-emoji">😱</div>
+        <div class="psych-title">FOMO (Fear of Missing Out)</div>
+        <div class="psych-text">Membeli saham yang sudah naik tinggi karena takut ketinggalan keuntungan. Sering berakhir beli di puncak, terjebak saat harga koreksi.</div>
+      </div>
+      <div class="psych-card">
+        <div class="psych-emoji">🙈</div>
+        <div class="psych-title">Confirmation Bias</div>
+        <div class="psych-text">Hanya mencari informasi yang mendukung keyakinan yang sudah ada. Mengabaikan sinyal negatif karena sudah terlanjur "cinta" pada saham tertentu.</div>
+      </div>
+      <div class="psych-card">
+        <div class="psych-emoji">💎</div>
+        <div class="psych-title">Sunk Cost Fallacy</div>
+        <div class="psych-text">"Nyangkut" dan tidak mau cut loss karena merasa rugi melepas. Terus averaging down tanpa analisis ulang hanya karena sudah investasi banyak.</div>
+      </div>
+      <div class="psych-card">
+        <div class="psych-emoji">🎲</div>
+        <div class="psych-title">Overconfidence Bias</div>
+        <div class="psych-text">Merasa analisis sendiri selalu benar setelah beberapa kali profit. Cenderung all-in, tidak pasang stop loss, dan meremehkan risiko.</div>
+      </div>
+      <div class="psych-card">
+        <div class="psych-emoji">🐑</div>
+        <div class="psych-title">Herd Mentality</div>
+        <div class="psych-text">Ikut-ikutan membeli atau menjual karena melihat mayoritas pasar melakukan hal yang sama. Ini penyebab utama bubble dan panic selling.</div>
+      </div>
+      <div class="psych-card">
+        <div class="psych-emoji">⚓</div>
+        <div class="psych-title">Anchoring Bias</div>
+        <div class="psych-text">Terpaku pada harga beli awal sebagai referensi nilai. "Gue harus jual di harga 2.000 karena beli di situ" — padahal kondisi fundamental sudah berubah.</div>
+      </div>
+    </div>
+
+    <h3 style="font-size:18px;font-weight:700;color:var(--navy);margin:32px 0 16px;">Siklus Emosi Pasar (Market Emotion Cycle)</h3>
+    <div class="card" style="margin-bottom:24px;">
+      <div style="display:flex;gap:0;overflow-x:auto;padding:8px 0;">
+        <div style="text-align:center;min-width:80px;padding:12px 8px;">
+          <div style="font-size:20px;margin-bottom:4px;">😊</div>
+          <div style="font-size:11px;font-weight:700;color:var(--emerald);">Optimisme</div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--text-light);font-size:18px;">→</div>
+        <div style="text-align:center;min-width:80px;padding:12px 8px;">
+          <div style="font-size:20px;margin-bottom:4px;">😃</div>
+          <div style="font-size:11px;font-weight:700;color:var(--emerald);">Euforia</div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--text-light);font-size:18px;">→</div>
+        <div style="text-align:center;min-width:80px;padding:12px 8px;">
+          <div style="font-size:20px;margin-bottom:4px;">😤</div>
+          <div style="font-size:11px;font-weight:700;color:#E67E22;">Denial</div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--text-light);font-size:18px;">→</div>
+        <div style="text-align:center;min-width:80px;padding:12px 8px;">
+          <div style="font-size:20px;margin-bottom:4px;">😰</div>
+          <div style="font-size:11px;font-weight:700;color:#E67E22;">Ketakutan</div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--text-light);font-size:18px;">→</div>
+        <div style="text-align:center;min-width:80px;padding:12px 8px;">
+          <div style="font-size:20px;margin-bottom:4px;">😭</div>
+          <div style="font-size:11px;font-weight:700;color:var(--red);">Kepanikan</div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--text-light);font-size:18px;">→</div>
+        <div style="text-align:center;min-width:80px;padding:12px 8px;">
+          <div style="font-size:20px;margin-bottom:4px;">🫥</div>
+          <div style="font-size:11px;font-weight:700;color:var(--text-muted);">Depresi</div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--text-light);font-size:18px;">→</div>
+        <div style="text-align:center;min-width:80px;padding:12px 8px;">
+          <div style="font-size:20px;margin-bottom:4px;">😟</div>
+          <div style="font-size:11px;font-weight:700;color:var(--text-muted);">Skeptis</div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--text-light);font-size:18px;">→</div>
+        <div style="text-align:center;min-width:80px;padding:12px 8px;">
+          <div style="font-size:20px;margin-bottom:4px;">🙂</div>
+          <div style="font-size:11px;font-weight:700;color:var(--blue);">Harapan</div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--text-light);font-size:18px;">→</div>
+        <div style="text-align:center;min-width:80px;padding:12px 8px;">
+          <div style="font-size:20px;margin-bottom:4px;">😊</div>
+          <div style="font-size:11px;font-weight:700;color:var(--emerald);">Optimisme</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:12px;line-height:1.6;">Warren Buffett membalik siklus ini: "Jadilah rakus ketika orang lain takut, dan takutlah ketika orang lain rakus." Euforia = waktu terbaik untuk jual, Kepanikan = waktu terbaik untuk akumulasi saham bagus dengan harga diskon.</div>
+    </div>
+
+    <h3 style="font-size:18px;font-weight:700;color:var(--navy);margin:28px 0 16px;">Prinsip Psikologi Investasi yang Sehat</h3>
+    <ol class="step-list">
+      <li><strong>Buat Rencana Trading/Investasi Tertulis</strong> — Sebelum masuk posisi, tentukan: entry point, target profit, dan stop loss. Ini memaksa kamu berpikir rasional, bukan reaktif.</li>
+      <li><strong>Manajemen Risiko adalah Fondasi, Bukan Pilihan</strong> — Jangan pernah investasikan lebih dari yang kamu rela kehilangan. Diversifikasi bukan tentang membatasi keuntungan, tapi melindungi dari skenario terburuk.</li>
+      <li><strong>Pisahkan Uang Emosi dari Uang Investasi</strong> — Gunakan hanya dana yang tidak dibutuhkan dalam 3–5 tahun ke depan. Tekanan finansial langsung mengundang keputusan emosional.</li>
+      <li><strong>Jurnal Trading/Investasi</strong> — Catat setiap transaksi: alasan masuk, alasan keluar, emosi yang dirasakan. Ini adalah alat pembelajaran paling powerful yang jarang digunakan investor ritel.</li>
+      <li><strong>Pahami Bedanya Noise vs Signal</strong> — Berita harian, gosip di grup Telegram, rekomendasi saham viral di media sosial = noise. Laporan keuangan kuartalan, perubahan fundamental bisnis, kebijakan makroekonomi = signal. Latih kemampuan ini.</li>
+      <li><strong>Terima Kerugian sebagai Biaya Belajar</strong> — Semua investor pernah rugi. Yang membedakan investor sukses bukan "tidak pernah rugi" tapi "rugi kecil, profit besar." Cut loss saat salah adalah tanda kecerdasan, bukan kekalahan.</li>
+      <li><strong>Hindari Overtrading</strong> — Lebih banyak transaksi tidak selalu berarti lebih banyak profit. Komisi, pajak, dan keputusan terburu-buru menggerus portofolio. Kualitas keputusan jauh lebih penting dari kuantitasnya.</li>
+    </ol>
+
+    <div class="info-box gold">
+      <div class="info-box-title">🏆 Mindset Investor Jangka Panjang vs Trader</div>
+      <p><strong>Investor:</strong> Beli bisnis, bukan saham. Horizon 5–10+ tahun. Volatilitas jangka pendek adalah teman, bukan musuh. Kekuatan terbesar: compounding. <strong>Trader:</strong> Beli momentum atau sentimen harga. Horizon hari–minggu–bulan. Manajemen risiko ketat adalah nyawa. Keduanya valid — tapi butuh psikologi dan disiplin yang berbeda.</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- ─── QUIZ ─── -->
+<section id="quiz-section">
+  <div class="quiz-container">
+    <div class="quiz-eyebrow">🎯 Mini Quiz</div>
+    <h2 class="quiz-title">Uji Pemahamanmu</h2>
+    <p class="quiz-subtitle">7 pertanyaan dari semua modul yang sudah kamu pelajari.</p>
+
+    <div class="quiz-progress-bar">
+      <div class="quiz-progress-fill" id="quizProgress" style="width: 0%"></div>
+    </div>
+
+    <div id="quizArea">
+      <div class="quiz-meta">
+        <span class="quiz-topic" id="quizTopic">Sejarah</span>
+        <span class="quiz-counter" id="quizCounter">1 / 7</span>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-question" id="quizQuestion"></div>
+        <div class="quiz-options" id="quizOptions"></div>
+        <div class="quiz-feedback" id="quizFeedback"></div>
+        <button class="quiz-next" id="quizNextBtn" onclick="nextQuestion()">Pertanyaan Berikutnya →</button>
+      </div>
+    </div>
+
+    <div class="quiz-result" id="quizResult">
+      <div class="quiz-score-big" id="finalScore"></div>
+      <div class="quiz-score-label">dari 7 pertanyaan benar</div>
+      <div class="quiz-score-msg" id="scoreMsg"></div>
+      <div class="quiz-score-sub" id="scoreSub"></div>
+      <button class="quiz-restart" onclick="restartQuiz()">Ulangi Quiz 🔁</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Dibuat untuk edukasi pasar modal Indonesia &nbsp;|&nbsp; <strong>AkademiSaham.id</strong> &nbsp;|&nbsp; Data dan contoh bersifat ilustratif, bukan rekomendasi investasi.</p>
+  <p style="margin-top:8px;">Investasi selalu mengandung risiko. Lakukan riset mandiri sebelum mengambil keputusan finansial.</p>
+</footer>
+
+<script>
+  const questions = [
+    {
+      topic: "Sejarah",
+      q: "Pada tahun berapa Bursa Efek Jakarta dan Bursa Efek Surabaya resmi bergabung menjadi Bursa Efek Indonesia (BEI)?",
+      options: ["2000", "2004", "2007", "2010"],
+      answer: 2,
+      explanation: "Bursa Efek Jakarta (BEJ) dan Bursa Efek Surabaya (BES) resmi bergabung menjadi Bursa Efek Indonesia (BEI/IDX) pada 30 November 2007. Penyatuan ini bertujuan meningkatkan efisiensi dan daya saing pasar modal Indonesia."
+    },
+    {
+      topic: "Indeks Saham",
+      q: "Indeks manakah yang berisi 25 saham yang memenuhi kriteria ESG (Environmental, Social & Governance) di BEI?",
+      options: ["LQ45", "IDX30", "Indeks Sri-Kehati", "IDX High Dividend 20"],
+      answer: 2,
+      explanation: "Indeks Sri-Kehati adalah indeks ESG pertama di Indonesia, berisi 25 saham yang memenuhi kriteria lingkungan (Environmental), sosial (Social), dan tata kelola (Governance). Dikembangkan BEI bersama Yayasan Kehati."
+    },
+    {
+      topic: "Hitung IHSG",
+      q: "Mengapa Nilai Dasar (Base Value) dalam perhitungan IHSG perlu disesuaikan?",
+      options: [
+        "Karena harga saham naik setiap hari",
+        "Karena ada aksi korporasi seperti IPO baru atau stock split",
+        "Karena inflasi tahunan Indonesia",
+        "Karena keputusan Bank Indonesia soal suku bunga"
+      ],
+      answer: 1,
+      explanation: "Nilai Dasar hanya disesuaikan saat ada aksi korporasi yang mengubah jumlah saham beredar di pasar (IPO baru, stock split, right issue, delisting) — bukan karena perubahan harga biasa. Ini menjaga konsistensi perhitungan IHSG."
+    },
+    {
+      topic: "Analisis Fundamental",
+      q: "Seorang investor melihat saham dengan P/E 6x, ROE 18%, dan DER 0,5x di sektor yang rata-rata P/E-nya 12x. Dari sudut pandang fundamental, kondisi ini menunjukkan...",
+      options: [
+        "Saham terlalu mahal, hindari",
+        "Saham berpotensi undervalued dengan fundamental kuat",
+        "Perusahaan pasti akan bangkrut",
+        "Tidak bisa ditarik kesimpulan apapun"
+      ],
+      answer: 1,
+      explanation: "P/E 6x di bawah rata-rata sektor 12x mengindikasikan saham relatif murah (undervalued). ROE 18% menunjukkan efisiensi modal yang baik (di atas threshold 15%). DER 0,5x menunjukkan hutang rendah dan neraca sehat. Kombinasi ini adalah sinyal fundamental yang kuat."
+    },
+    {
+      topic: "Analisis Teknikal",
+      q: "Dalam analisis teknikal, apa yang dimaksud dengan 'Golden Cross'?",
+      options: [
+        "RSI menembus level 70 ke atas",
+        "Harga menyentuh Fibonacci 61,8%",
+        "MA50 memotong MA200 dari bawah ke atas",
+        "Terbentuknya pola candlestick Hammer"
+      ],
+      answer: 2,
+      explanation: "Golden Cross terjadi ketika Moving Average 50 hari (MA50) memotong Moving Average 200 hari (MA200) dari bawah ke atas. Ini adalah salah satu sinyal bullish paling kuat dalam analisis teknikal, mengindikasikan potensi perubahan tren jangka pendek menjadi positif."
+    },
+    {
+      topic: "Jenis Saham",
+      q: "Saham perusahaan farmasi seperti Kalbe Farma (KLBF) paling tepat dikategorikan sebagai jenis saham apa?",
+      options: [
+        "Growth Stock — karena revenue terus naik",
+        "Cyclical Stock — karena mengikuti siklus ekonomi",
+        "Defensive Stock — karena kebutuhan kesehatan relatif stabil",
+        "Value Stock — karena P/BV di bawah 1"
+      ],
+      answer: 2,
+      explanation: "Saham farmasi dikategorikan sebagai Defensive Stock karena kebutuhan obat-obatan dan produk kesehatan relatif tidak terpengaruh kondisi ekonomi. Masyarakat tetap membeli obat meski ekonomi sedang lesu — itulah yang membuat saham ini lebih stabil saat pasar volatile."
+    },
+    {
+      topic: "Psikologi Investasi",
+      q: "Seorang investor membeli saham di Rp1.000, harga turun ke Rp700, dan ia menolak cut loss sambil berkata 'nanti pasti balik ke 1.000'. Bias kognitif apa yang paling mungkin ia alami?",
+      options: [
+        "FOMO — Fear of Missing Out",
+        "Overconfidence Bias",
+        "Sunk Cost Fallacy & Anchoring Bias",
+        "Herd Mentality"
+      ],
+      answer: 2,
+      explanation: "Kasus ini menggabungkan dua bias: Sunk Cost Fallacy (tidak mau cut loss karena merasa rugi melepas sesuatu yang sudah diinvestasikan) dan Anchoring Bias (terpaku pada harga beli Rp1.000 sebagai referensi 'nilai wajar'). Kombinasi keduanya adalah jebakan psikologis paling umum yang menyebabkan kerugian besar di pasar saham."
+    }
+  ];
+
+  let currentQ = 0;
+  let score = 0;
+  let answered = false;
+
+  function loadQuestion() {
+    const q = questions[currentQ];
+    document.getElementById('quizTopic').textContent = q.topic;
+    document.getElementById('quizCounter').textContent = (currentQ + 1) + ' / ' + questions.length;
+    document.getElementById('quizProgress').style.width = (currentQ / questions.length * 100) + '%';
+    document.getElementById('quizQuestion').textContent = q.q;
+
+    const optDiv = document.getElementById('quizOptions');
+    optDiv.innerHTML = '';
+    const letters = ['A', 'B', 'C', 'D'];
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-option';
+      btn.innerHTML = '<span class="option-letter">' + letters[i] + '</span>' + opt;
+      btn.onclick = () => selectAnswer(i, btn);
+      optDiv.appendChild(btn);
+    });
+
+    document.getElementById('quizFeedback').style.display = 'none';
+    document.getElementById('quizFeedback').className = 'quiz-feedback';
+    document.getElementById('quizNextBtn').style.display = 'none';
+    answered = false;
+  }
+
+  function selectAnswer(idx, btn) {
+    if (answered) return;
+    answered = true;
+
+    const q = questions[currentQ];
+    const options = document.querySelectorAll('.quiz-option');
+    options.forEach(b => { b.disabled = true; });
+
+    if (idx === q.answer) {
+      btn.classList.add('correct');
+      score++;
+      const fb = document.getElementById('quizFeedback');
+      fb.className = 'quiz-feedback correct';
+      fb.innerHTML = '✅ <strong>Benar!</strong> ' + q.explanation;
+      fb.style.display = 'block';
+    } else {
+      btn.classList.add('wrong');
+      options[q.answer].classList.add('correct');
+      options.forEach((b, i) => { if (i !== idx && i !== q.answer) b.classList.add('dim'); });
+      const fb = document.getElementById('quizFeedback');
+      fb.className = 'quiz-feedback wrong';
+      fb.innerHTML = '❌ <strong>Kurang tepat.</strong> ' + q.explanation;
+      fb.style.display = 'block';
+    }
+
+    const nextBtn = document.getElementById('quizNextBtn');
+    nextBtn.style.display = 'inline-block';
+    if (currentQ === questions.length - 1) {
+      nextBtn.textContent = 'Lihat Hasil Quiz 🏆';
+    } else {
+      nextBtn.textContent = 'Pertanyaan Berikutnya →';
+    }
+  }
+
+  function nextQuestion() {
+    currentQ++;
+    if (currentQ >= questions.length) {
+      showResult();
+    } else {
+      loadQuestion();
+    }
+  }
+
+  function showResult() {
+    document.getElementById('quizArea').style.display = 'none';
+    const result = document.getElementById('quizResult');
+    result.style.display = 'block';
+
+    document.getElementById('finalScore').textContent = score + '/' + questions.length;
+    document.getElementById('quizProgress').style.width = '100%';
+
+    let msg, sub;
+    if (score === 7) {
+      msg = '🏆 Sempurna! Kamu sudah siap masuk pasar!';
+      sub = 'Pemahaman kamu tentang pasar saham Indonesia sangat kuat. Langkah berikutnya: buka akun sekuritas, mulai investasi dengan Dana Darurat yang aman, dan terus praktik analisis.';
+    } else if (score >= 5) {
+      msg = '🎉 Luar biasa! Fondasi kamu sudah solid.';
+      sub = 'Kamu menguasai sebagian besar materi dengan baik. Review ulang modul yang menjadi sumber kesalahan, lalu ulangi quiz untuk hasil sempurna!';
+    } else if (score >= 3) {
+      msg = '📚 Lumayan! Tapi masih perlu lebih dalam.';
+      sub = 'Kamu punya dasar yang cukup, tapi beberapa konsep kunci masih perlu diperdalam. Baca ulang modul Analisis Fundamental, Teknikal, dan Psikologi — itu pondasi terpenting.';
+    } else {
+      msg = '💪 Jangan menyerah! Baca ulang dulu ya.';
+      sub = 'Tidak apa-apa — semua investor profesional juga pernah di tahap belajar. Kembali ke atas, baca setiap modul dengan seksama, dan coba lagi. Kamu pasti bisa!';
+    }
+
+    document.getElementById('scoreMsg').textContent = msg;
+    document.getElementById('scoreSub').textContent = sub;
+  }
+
+  function restartQuiz() {
+    currentQ = 0;
+    score = 0;
+    answered = false;
+    document.getElementById('quizArea').style.display = 'block';
+    document.getElementById('quizResult').style.display = 'none';
+    loadQuestion();
+  }
+
+  /* ═══════════ KALKULATOR ═══════════ */
+  const $c = id => document.getElementById(id);
+  const cNum = v => { const x = parseFloat(v); return isNaN(x) ? 0 : x; };
+  const fmtN = (v, dec) => v.toLocaleString('id-ID', { minimumFractionDigits: 0, maximumFractionDigits: dec === undefined ? 2 : dec });
+  const fmtRp = v => 'Rp' + fmtN(v, 0);
+  function fmtShort(v) {
+    const a = Math.abs(v);
+    if (a >= 1e12) return 'Rp' + fmtN(v / 1e12, 2) + ' T';
+    if (a >= 1e9) return 'Rp' + fmtN(v / 1e9, 2) + ' M';
+    if (a >= 1e6) return 'Rp' + fmtN(v / 1e6, 2) + ' Jt';
+    return fmtRp(v);
+  }
+  function resultCard(label, value, sub, cls, pill) {
+    return '<div class="result-card ' + (cls || '') + '"><div class="result-label"><span>' + label + '</span>' +
+      (pill ? '<span class="status-pill">' + pill + '</span>' : '') + '</div><div class="result-value">' + value +
+      '</div><div class="result-sub">' + (sub || '') + '</div></div>';
+  }
+
+  /* ── Kalkulator IHSG (Modul 3) ── */
+  function addIhsgRow(kode, harga, naik, lembar) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><input class="calc-input ihsg-k" value="${kode}" style="min-width:70px"></td>
+      <td><input type="number" min="0" step="any" class="calc-input ihsg-h" value="${harga}"></td>
+      <td><input type="number" step="any" class="calc-input ihsg-p" value="${naik}"></td>
+      <td><input type="number" min="0" class="calc-input ihsg-l" value="${lembar}"></td>
+      <td class="out o-h1">–</td><td class="out o-a">–</td><td class="out o-b">–</td><td class="out o-c">–</td>
+      <td><button type="button" class="calc-del" title="Hapus" onclick="this.closest('tr').remove();hitungIhsg();">✕</button></td>`;
+    $c('ihsgRows').appendChild(tr);
+  }
+  function resetIhsg() {
+    $c('ihsgRows').innerHTML = '';
+    addIhsgRow('AABB', 1000, 10, 1000000000);
+    addIhsgRow('CCDD', 2500, 5, 500000000);
+    addIhsgRow('EEFF', 800, 0, 2000000000);
+    $c('ihsgND').value = 2000000000000;
+    $c('ihsgBase').value = '';
+    $c('ihsgDNP').value = 0;
+    hitungIhsg();
+  }
+  function hitungIhsg() {
+    const rows = [...document.querySelectorAll('#ihsgRows tr')];
+    let np0 = 0, np1 = 0;
+    const data = rows.map(tr => {
+      const h = cNum(tr.querySelector('.ihsg-h').value);
+      const p = cNum(tr.querySelector('.ihsg-p').value);
+      const l = cNum(tr.querySelector('.ihsg-l').value);
+      const h1 = h * (1 + p / 100);
+      const a = h * l, b = h1 * l;
+      np0 += a; np1 += b;
+      return { tr, h1, a, b };
+    });
+    let nd = cNum($c('ihsgND').value);
+    const base = cNum($c('ihsgBase').value);
+    const dnp = cNum($c('ihsgDNP').value);
+    let derived = false;
+    if (!(nd > 0) && base > 0 && np0 > 0) { nd = np0 / base * 100; derived = true; }
+
+    const res = $c('ihsgResults'), steps = $c('ihsgSteps');
+    if (!(np0 > 0)) {
+      data.forEach(x => { x.tr.querySelector('.o-h1').textContent = '–'; x.tr.querySelector('.o-a').textContent = '–'; x.tr.querySelector('.o-b').textContent = '–'; x.tr.querySelector('.o-c').textContent = '–'; });
+      res.innerHTML = '<div class="calc-msg">Isi minimal satu saham dengan harga dan jumlah lembar.</div>';
+      steps.innerHTML = '';
+      return;
+    }
+    if (!(nd > 0)) {
+      data.forEach(x => {
+        x.tr.querySelector('.o-h1').textContent = fmtN(x.h1, 2);
+        x.tr.querySelector('.o-a').textContent = fmtShort(x.a);
+        x.tr.querySelector('.o-b').textContent = fmtShort(x.b);
+        x.tr.querySelector('.o-c').textContent = '–';
+      });
+      res.innerHTML = resultCard('Total Nilai Pasar Awal', fmtShort(np0), fmtRp(np0), '') +
+        resultCard('Total Nilai Pasar Baru', fmtShort(np1), fmtRp(np1), '') +
+        '<div class="calc-msg" style="grid-column:1/-1;">Isi Nilai Dasar atau IHSG awal untuk melihat hasil IHSG.</div>';
+      steps.innerHTML = '';
+      return;
+    }
+
+    const ndBaru = nd * (np0 + dnp) / np0;
+    const ihsg0 = np0 / nd * 100;
+    const ihsg1 = (np1 + dnp) / ndBaru * 100;
+    const selisih = ihsg1 - ihsg0;
+    const pct = ihsg0 !== 0 ? selisih / ihsg0 * 100 : 0;
+
+    data.forEach(x => {
+      const kontrib = (x.b - x.a) / ndBaru * 100;
+      x.tr.querySelector('.o-h1').textContent = fmtN(x.h1, 2);
+      x.tr.querySelector('.o-a').textContent = fmtShort(x.a);
+      x.tr.querySelector('.o-b').textContent = fmtShort(x.b);
+      const c = x.tr.querySelector('.o-c');
+      c.textContent = (kontrib >= 0 ? '+' : '') + fmtN(kontrib, 3) + ' poin';
+      c.style.color = kontrib > 0 ? 'var(--emerald)' : kontrib < 0 ? 'var(--red)' : 'var(--navy)';
+    });
+
+    const sign = selisih >= 0 ? '+' : '';
+    res.innerHTML =
+      resultCard('Total Nilai Pasar Awal', fmtShort(np0), fmtRp(np0), '') +
+      resultCard('Total Nilai Pasar Akhir', fmtShort(np1 + dnp), fmtRp(np1 + dnp) + (dnp ? ' (termasuk ΔNP)' : ''), '') +
+      resultCard('Nilai Dasar Awal', fmtShort(nd), fmtRp(nd) + (derived ? ' (diturunkan dari IHSG awal)' : ''), '') +
+      resultCard('Nilai Dasar Baru', fmtShort(ndBaru), dnp ? 'Disesuaikan karena aksi korporasi' : 'Tidak berubah (tanpa aksi korporasi)', '') +
+      resultCard('IHSG Awal', fmtN(ihsg0, 2), '', 'hl') +
+      resultCard('IHSG Baru', fmtN(ihsg1, 2), sign + fmtN(selisih, 2) + ' poin (' + sign + fmtN(pct, 2) + '%)', selisih > 0 ? 'good' : selisih < 0 ? 'bad' : 'neutral', selisih > 0 ? 'Naik' : selisih < 0 ? 'Turun' : 'Tetap');
+
+    steps.innerHTML = '<div class="calc-steps"><div class="step-title">Langkah Perhitungan</div>' +
+      '1. <b>Nilai Pasar</b> = Harga × Lembar, dijumlahkan semua saham → awal ' + fmtRp(np0) + ', setelah kenaikan ' + fmtRp(np1) + '<br>' +
+      '2. <b>Nilai Dasar Baru</b> = ' + fmtN(nd, 0) + ' × (' + fmtN(np0, 0) + ' + ' + fmtN(dnp, 0) + ') / ' + fmtN(np0, 0) + ' = ' + fmtN(ndBaru, 0) + '<br>' +
+      '3. <b>IHSG Awal</b> = ' + fmtN(np0, 0) + ' / ' + fmtN(nd, 0) + ' × 100 = ' + fmtN(ihsg0, 2) + '<br>' +
+      '4. <b>IHSG Baru</b> = (' + fmtN(np1, 0) + ' + ' + fmtN(dnp, 0) + ') / ' + fmtN(ndBaru, 0) + ' × 100 = ' + fmtN(ihsg1, 2) +
+      '</div>';
+  }
+
+  /* ── Kalkulator Rasio Fundamental (Modul 6) ── */
+  const fundFieldDefs = [
+    ['fPrice', 'Harga Saham (Rp)', 'mis. 5000', ''],
+    ['fShares', 'Jumlah Saham Beredar', 'mis. 10', 'Sesuai satuan saham di atas'],
+    ['fNI', 'Laba Bersih', 'mis. 5000', ''],
+    ['fNIprev', 'Laba Bersih Tahun Lalu (opsional)', 'mis. 4500', 'Untuk pertumbuhan EPS'],
+    ['fRev', 'Pendapatan (Revenue)', 'mis. 40000', ''],
+    ['fRevPrev', 'Pendapatan Tahun Lalu (opsional)', 'mis. 36000', 'Untuk pertumbuhan pendapatan'],
+    ['fAsset', 'Total Aset', 'mis. 70000', ''],
+    ['fLiab', 'Total Liabilitas (Hutang)', 'mis. 35000', ''],
+    ['fEq', 'Total Ekuitas', 'mis. 35000', ''],
+    ['fCA', 'Aset Lancar', 'mis. 30000', ''],
+    ['fCL', 'Liabilitas Lancar', 'mis. 18000', ''],
+    ['fDPS', 'Dividen per Saham / DPS (Rp)', 'mis. 250', 'Dalam Rupiah per lembar']
+  ];
+  const fundExample = { fPrice: 5000, fShares: 10, fNI: 5000, fNIprev: 4500, fRev: 40000, fRevPrev: 36000, fAsset: 70000, fLiab: 35000, fEq: 35000, fCA: 30000, fCL: 18000, fDPS: 250 };
+  function buildFundFields() {
+    $c('fundFields').innerHTML = fundFieldDefs.map(f =>
+      '<div class="calc-field"><label for="' + f[0] + '">' + f[1] + '</label>' +
+      '<input type="number" step="any" class="calc-input" id="' + f[0] + '" placeholder="' + f[2] + '">' +
+      (f[3] ? '<small>' + f[3] + '</small>' : '') + '</div>').join('');
+  }
+  function contohFund() {
+    Object.keys(fundExample).forEach(k => { $c(k).value = fundExample[k]; });
+    hitungFund();
+  }
+  function kosongFund() {
+    fundFieldDefs.forEach(f => { $c(f[0]).value = ''; });
+    hitungFund();
+  }
+  function hitungFund() {
+    const U = cNum($c('fUnit').value) || 1, SU = cNum($c('fShareUnit').value) || 1;
+    const g = id => { const v = parseFloat($c(id).value); return isNaN(v) ? null : v; };
+    const m = (v, k) => v === null ? null : v * k;
+    const d = (a, b) => (a === null || b === null || b === 0) ? null : a / b;
+    const P = g('fPrice'), SH = m(g('fShares'), SU), NI = m(g('fNI'), U), NIp = m(g('fNIprev'), U),
+      REV = m(g('fRev'), U), REVp = m(g('fRevPrev'), U), AS = m(g('fAsset'), U), LI = m(g('fLiab'), U),
+      EQ = m(g('fEq'), U), CA = m(g('fCA'), U), CL = m(g('fCL'), U), DPS = g('fDPS');
+
+    const EPS = d(NI, SH), BV = d(EQ, SH);
+    const PER = (EPS !== null && EPS > 0) ? d(P, EPS) : null;
+    const PBV = d(P, BV);
+    const ROE = d(NI, EQ), ROA = d(NI, AS), DER = d(LI, EQ), CR = d(CA, CL);
+    const DY = d(DPS, P), NPM = d(NI, REV), PAY = (EPS !== null && EPS > 0) ? d(DPS, EPS) : null;
+    const MCAP = (P !== null && SH !== null) ? P * SH : null;
+    const EPSg = (NI !== null && NIp !== null && NIp > 0) ? (NI - NIp) / NIp * 100 : null;
+    const REVg = (REV !== null && REVp !== null && REVp > 0) ? (REV - REVp) / REVp * 100 : null;
+
+    const pct = v => fmtN(v * 100, 2) + '%';
+    const x = v => fmtN(v, 2) + 'x';
+    const cards = [];
+    const add = (name, formula, val, fmt, status, note) => {
+      const empty = val === null;
+      const cls = empty ? 'empty' : status || '';
+      const pill = empty ? '' : status === 'good' ? 'Ideal' : status === 'bad' ? 'Waspada' : status === 'neutral' ? 'Netral' : '';
+      cards.push(resultCard(name, empty ? '—' : fmt(val), empty ? 'Butuh: ' + formula : (note || formula), cls, pill));
+    };
+
+    // EPS
+    add('EPS', 'Laba Bersih, Jumlah Saham', EPS, v => 'Rp' + fmtN(v, 2),
+      EPS === null ? '' : (EPS <= 0 ? 'bad' : (EPSg !== null ? (EPSg > 0 ? 'good' : 'bad') : 'neutral')),
+      'Laba Bersih ÷ Saham Beredar' + (EPSg !== null ? ' · pertumbuhan ' + fmtN(EPSg, 1) + '%' : ''));
+    add('BV per Saham', 'Ekuitas, Jumlah Saham', BV, v => 'Rp' + fmtN(v, 2), '', 'Ekuitas ÷ Saham Beredar');
+    // PER
+    if (EPS !== null && EPS <= 0) {
+      cards.push(resultCard('P/E Ratio', 'Rugi', 'EPS negatif, P/E tidak bermakna', 'bad', 'Waspada'));
+    } else {
+      add('P/E Ratio', 'Harga, Laba, Saham', PER, x, PER === null ? '' : (PER >= 8 && PER <= 15 ? 'good' : PER > 30 ? 'bad' : 'neutral'),
+        'Harga ÷ EPS · ideal 8–15x, waspada >30x');
+    }
+    add('P/BV', 'Harga, Ekuitas, Saham', PBV, x, PBV === null ? '' : (PBV < 1.5 && PBV > 0 ? 'good' : PBV > 5 ? 'bad' : 'neutral'),
+      'Harga ÷ BV per Saham · ideal <1,5x, waspada >5x');
+    add('ROE', 'Laba Bersih, Ekuitas', ROE, pct, ROE === null ? '' : (ROE > 0.15 ? 'good' : ROE < 0.08 ? 'bad' : 'neutral'),
+      'Laba Bersih ÷ Ekuitas · ideal >15%, waspada <8%');
+    add('ROA', 'Laba Bersih, Total Aset', ROA, pct, ROA === null ? '' : (ROA > 0.05 ? 'good' : ROA < 0.01 ? 'bad' : 'neutral'),
+      'Laba Bersih ÷ Total Aset · ideal >5%, waspada <1%');
+    add('Debt to Equity (DER)', 'Liabilitas, Ekuitas', DER, x, DER === null ? '' : (DER < 1 ? 'good' : DER > 3 ? 'bad' : 'neutral'),
+      'Hutang ÷ Ekuitas · ideal <1x, waspada >3x');
+    add('Current Ratio', 'Aset Lancar, Liabilitas Lancar', CR, x, CR === null ? '' : (CR > 1.5 ? 'good' : CR < 1 ? 'bad' : 'neutral'),
+      'Aset Lancar ÷ Liabilitas Lancar · ideal >1,5x, waspada <1x');
+    add('Dividend Yield', 'DPS, Harga', DY, pct, DY === null ? '' : (DY >= 0.03 && DY <= 0.08 ? 'good' : DY > 0.15 ? 'bad' : 'neutral'),
+      'DPS ÷ Harga · ideal 3–8%, waspada >15%');
+    add('Payout Ratio', 'DPS, EPS', PAY, pct, '', 'DPS ÷ EPS · porsi laba yang dibagikan');
+    add('Net Profit Margin', 'Laba Bersih, Pendapatan', NPM, pct, NPM === null ? '' : (NPM > 0.10 ? 'good' : NPM < 0.03 ? 'bad' : 'neutral'),
+      'Laba Bersih ÷ Pendapatan · ideal >10%, waspada <3%');
+    add('Pertumbuhan Laba', 'Laba Bersih & Laba Tahun Lalu', EPSg, v => (v >= 0 ? '+' : '') + fmtN(v, 2) + '%', EPSg === null ? '' : (EPSg > 0 ? 'good' : 'bad'), 'YoY dibanding tahun lalu');
+    add('Pertumbuhan Pendapatan', 'Pendapatan & Pendapatan Tahun Lalu', REVg, v => (v >= 0 ? '+' : '') + fmtN(v, 2) + '%', REVg === null ? '' : (REVg > 0 ? 'good' : 'bad'), 'YoY dibanding tahun lalu');
+    add('Kapitalisasi Pasar', 'Harga, Saham Beredar', MCAP, fmtShort, '', 'Harga × Saham Beredar');
+
+    $c('fundResults').innerHTML = cards.join('');
+
+    const warn = $c('fundWarn');
+    if (AS !== null && LI !== null && EQ !== null && AS > 0 && Math.abs(AS - (LI + EQ)) / AS > 0.01) {
+      warn.innerHTML = '<div class="calc-warn">⚠️ Total Aset tidak sama dengan Liabilitas + Ekuitas (selisih ' + fmtN(Math.abs(AS - (LI + EQ)) / U, 2) + ' pada satuan terpilih). Cek lagi angka neraca atau satuannya.</div>';
+    } else {
+      warn.innerHTML = '';
+    }
+  }
+
+  /* ── Kalkulator Moving Average (Modul 7) ── */
+  function parseSeries(text) {
+    return text.split(/[\s,;]+/).filter(Boolean).map(t => {
+      if (/^\d{1,3}(\.\d{3})+$/.test(t)) t = t.replace(/\./g, '');
+      return parseFloat(t);
+    }).filter(v => !isNaN(v));
+  }
+  function calcSMA(p, n) {
+    return p.map((_, i) => {
+      if (i < n - 1) return null;
+      let s = 0;
+      for (let j = i - n + 1; j <= i; j++) s += p[j];
+      return s / n;
+    });
+  }
+  function calcEMA(p, n) {
+    const out = p.map(() => null);
+    if (p.length < n) return out;
+    const k = 2 / (n + 1);
+    let s = 0;
+    for (let i = 0; i < n; i++) s += p[i];
+    out[n - 1] = s / n;
+    for (let i = n; i < p.length; i++) out[i] = p[i] * k + out[i - 1] * (1 - k);
+    return out;
+  }
+  function calcWMA(p, n) {
+    const den = n * (n + 1) / 2;
+    return p.map((_, i) => {
+      if (i < n - 1) return null;
+      let s = 0;
+      for (let j = 0; j < n; j++) s += p[i - n + 1 + j] * (j + 1);
+      return s / den;
+    });
+  }
+  function contohMA() {
+    $c('maData').value = '9500 9600 9550 9700 9800 9750 9900 10000 9950 10100 10200 10150 10300 10250 10400 10350 10500 10450 10600 10550';
+    $c('maPeriod').value = 5;
+    $c('maSlow').value = 10;
+    hitungMA();
+  }
+  function drawMaChart(p, sma, ema, wma) {
+    const W = 700, H = 260, pl = 56, pr = 12, pt = 14, pb = 22;
+    const all = [].concat(p, sma, ema, wma).filter(v => v !== null);
+    let mn = Math.min.apply(null, all), mx = Math.max.apply(null, all);
+    if (mn === mx) { mn -= 1; mx += 1; }
+    const pad = (mx - mn) * 0.08; mn -= pad; mx += pad;
+    const n = p.length;
+    const X = i => pl + (n === 1 ? 0 : i * (W - pl - pr) / (n - 1));
+    const Y = v => pt + (mx - v) * (H - pt - pb) / (mx - mn);
+    const line = (arr, color, w, dash) => {
+      let dd = '';
+      arr.forEach((v, i) => { if (v === null) return; dd += (dd ? ' L' : 'M') + X(i).toFixed(1) + ' ' + Y(v).toFixed(1); });
+      return dd ? '<path d="' + dd + '" fill="none" stroke="' + color + '" stroke-width="' + w + '"' + (dash ? ' stroke-dasharray="' + dash + '"' : '') + ' stroke-linejoin="round"/>' : '';
+    };
+    let grid = '';
+    for (let i = 0; i <= 4; i++) {
+      const v = mn + (mx - mn) * i / 4, y = Y(v);
+      grid += '<line x1="' + pl + '" x2="' + (W - pr) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '" stroke="rgba(255,255,255,0.08)"/>' +
+        '<text x="' + (pl - 6) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end" font-size="10" fill="rgba(255,255,255,0.45)">' + fmtN(v, 0) + '</text>';
+    }
+    const svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" role="img" aria-label="Grafik harga dan moving average">' + grid +
+      line(p, 'rgba(255,255,255,0.75)', 1.5, '') + line(sma, '#5AA9FF', 2, '') + line(ema, '#F0C96A', 2, '') + line(wma, '#22A87C', 2, '') +
+      '<text x="' + pl + '" y="' + (H - 6) + '" font-size="10" fill="rgba(255,255,255,0.45)">data ke-1</text>' +
+      '<text x="' + (W - pr) + '" y="' + (H - 6) + '" text-anchor="end" font-size="10" fill="rgba(255,255,255,0.45)">data ke-' + n + '</text></svg>';
+    return '<div class="ma-chart-wrap">' + svg +
+      '<div class="ma-legend"><span><i style="background:rgba(255,255,255,0.75)"></i>Harga</span><span><i style="background:#5AA9FF"></i>SMA</span><span><i style="background:#F0C96A"></i>EMA</span><span><i style="background:#22A87C"></i>WMA</span></div></div>';
+  }
+  function listJoin(arr, fmtFn) {
+    if (arr.length <= 6) return arr.map(fmtFn).join(' + ');
+    return arr.slice(0, 3).map(fmtFn).join(' + ') + ' + … + ' + arr.slice(-2).map(fmtFn).join(' + ');
+  }
+  function hitungMA() {
+    const p = parseSeries($c('maData').value);
+    const n = Math.floor(cNum($c('maPeriod').value));
+    const slow = Math.floor(cNum($c('maSlow').value));
+    const res = $c('maResults');
+    const clear = () => { $c('maChart').innerHTML = ''; $c('maSteps').innerHTML = ''; $c('maTable').innerHTML = ''; };
+    if (p.length === 0) { res.innerHTML = '<div class="calc-msg" style="grid-column:1/-1;">Masukkan data harga penutupan untuk mulai menghitung.</div>'; clear(); return; }
+    if (n < 1 || n > p.length) { res.innerHTML = '<div class="calc-msg" style="grid-column:1/-1;">Periode N harus antara 1 dan ' + p.length + ' (jumlah data yang kamu masukkan).</div>'; clear(); return; }
+
+    const sma = calcSMA(p, n), ema = calcEMA(p, n), wma = calcWMA(p, n);
+    const last = p.length - 1, price = p[last];
+    const rel = v => price > v ? 'Harga di atas MA (bullish)' : price < v ? 'Harga di bawah MA (bearish)' : 'Harga tepat di MA';
+    const relCls = v => price > v ? 'good' : price < v ? 'bad' : 'neutral';
+    const pillOf = v => price > v ? 'Di atas' : price < v ? 'Di bawah' : 'Sejajar';
+
+    let html = resultCard('Harga Terakhir', fmtN(price, 2), 'Data ke-' + p.length + ' dari ' + p.length, 'hl') +
+      resultCard('SMA ' + n, fmtN(sma[last], 2), rel(sma[last]), relCls(sma[last]), pillOf(sma[last])) +
+      resultCard('EMA ' + n, fmtN(ema[last], 2), rel(ema[last]), relCls(ema[last]), pillOf(ema[last])) +
+      resultCard('WMA ' + n, fmtN(wma[last], 2), rel(wma[last]), relCls(wma[last]), pillOf(wma[last]));
+
+    // MA Cross
+    let smaSlow = null, crossNote = '';
+    if (slow > n && slow <= p.length) {
+      smaSlow = calcSMA(p, slow);
+      const fast = sma, fv = fast[last], sv = smaSlow[last];
+      let lastCross = null;
+      for (let i = 1; i < p.length; i++) {
+        if (fast[i] === null || smaSlow[i] === null || fast[i - 1] === null || smaSlow[i - 1] === null) continue;
+        const d0 = fast[i - 1] - smaSlow[i - 1], d1 = fast[i] - smaSlow[i];
+        if (d0 <= 0 && d1 > 0) lastCross = { i: i, type: 'Golden Cross' };
+        else if (d0 >= 0 && d1 < 0) lastCross = { i: i, type: 'Death Cross' };
+      }
+      const bull = fv > sv;
+      html += resultCard('MA Cross (SMA ' + n + ' vs ' + slow + ')', bull ? 'MA cepat di atas' : (fv < sv ? 'MA cepat di bawah' : 'MA berhimpit'),
+        'SMA ' + n + ' = ' + fmtN(fv, 2) + ' · SMA ' + slow + ' = ' + fmtN(sv, 2) +
+        (lastCross ? ' · persilangan terakhir: ' + lastCross.type + ' di data ke-' + (lastCross.i + 1) : ' · belum ada persilangan pada data ini'),
+        bull ? 'good' : (fv < sv ? 'bad' : 'neutral'), bull ? 'Bullish' : (fv < sv ? 'Bearish' : 'Netral'));
+    } else {
+      html += resultCard('MA Cross', '—', slow > p.length ? 'Data kurang: butuh minimal ' + slow + ' data untuk MA lambat.' : 'Isi periode MA lambat yang lebih besar dari N.', 'empty');
+    }
+    res.innerHTML = html;
+
+    $c('maChart').innerHTML = drawMaChart(p, sma, ema, wma);
+
+    const winP = p.slice(last - n + 1);
+    const k = 2 / (n + 1);
+    const wnum = winP.reduce((s, v, j) => s + v * (j + 1), 0);
+    const fp = v => fmtN(v, 2);
+    $c('maSteps').innerHTML = '<div class="calc-steps"><div class="step-title">Langkah Perhitungan (data terakhir)</div>' +
+      '<b>SMA ' + n + '</b> = (' + listJoin(winP, fp) + ') / ' + n + ' = ' + fp(sma[last]) + '<br>' +
+      '<b>EMA ' + n + '</b>: k = 2 / (' + n + ' + 1) = ' + fmtN(k, 4) + '. ' +
+      (last >= n ? 'EMA = Harga × k + EMA kemarin × (1 − k) = ' + fp(p[last]) + ' × ' + fmtN(k, 4) + ' + ' + fp(ema[last - 1]) + ' × ' + fmtN(1 - k, 4) + ' = ' + fp(ema[last]) : 'EMA pertama diambil dari SMA ' + n + ' = ' + fp(ema[last])) + '<br>' +
+      '<b>WMA ' + n + '</b> = (' + (n > 4 ? '… + ' : '') + winP.map((v, j) => fp(v) + '×' + (j + 1)).slice(-4).join(' + ') + ') / ' + (n * (n + 1) / 2) + ' = ' + fp(wnum / (n * (n + 1) / 2)) +
+      '<br><span style="color:rgba(255,255,255,0.45);">Bobot WMA: data terlama ×1, terbaru ×' + n + '. EMA dan WMA lebih responsif daripada SMA karena menekankan data terbaru.</span></div>';
+
+    let rowsHtml = '';
+    for (let i = 0; i < p.length; i++) {
+      const c = v => v === null ? '–' : fmtN(v, 2);
+      rowsHtml += '<tr><td>' + (i + 1) + '</td><td>' + fmtN(p[i], 2) + '</td><td>' + c(sma[i]) + '</td><td>' + c(ema[i]) + '</td><td>' + c(wma[i]) + '</td>' +
+        (smaSlow ? '<td>' + c(smaSlow[i]) + '</td>' : '') + '</tr>';
+    }
+    $c('maTable').innerHTML = '<div class="ma-table-wrap"><table class="ma-table"><thead><tr><th>#</th><th>Harga</th><th>SMA ' + n + '</th><th>EMA ' + n + '</th><th>WMA ' + n + '</th>' +
+      (smaSlow ? '<th>SMA ' + slow + '</th>' : '') + '</tr></thead><tbody>' + rowsHtml + '</tbody></table></div>';
+  }
+
+  function toggleAccordion(header) {
+    const body = header.nextElementSibling;
+    const arrow = header.querySelector('.accordion-arrow');
+    body.classList.toggle('open');
+    arrow.classList.toggle('open');
+  }
+
+  loadQuestion();
+  buildFundFields();
+  resetIhsg();
+  hitungFund();
+  hitungMA();
+</script>
+</body>
+</html>
